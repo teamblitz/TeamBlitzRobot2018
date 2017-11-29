@@ -1,0 +1,9 @@
+.DS_Store
+*~
+/bin/**
+/build/**
+/dist/**
+**.class
+**.jar
+sysProps.xml
+/doc/
