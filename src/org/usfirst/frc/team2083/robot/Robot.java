@@ -52,8 +52,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-	//	autoCommand = new DriveStraight(10000, .5);
-		autoCommand = new DriveStraight(5000, .1);
+		autoCommand = new DriveStraight(10000, .3);
 		autoCommand.start();
 	}
 

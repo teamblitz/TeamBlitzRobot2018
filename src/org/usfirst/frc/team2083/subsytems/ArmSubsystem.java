@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class ArmSubsystem extends Subsystem{
 	public double motorSpeed;
+	public double stallSpeed;
 	WPI_TalonSRX armMotor;
 	WPI_VictorSPX armSlave;
 	
@@ -24,7 +25,8 @@ public class ArmSubsystem extends Subsystem{
 	    bottom = RobotMap.ArmPositionLower;
 	 	armMotor = RobotMap.armMotor;
 	 	armSlave = RobotMap.armSlave;
-	 	motorSpeed = 0.10;
+	 	motorSpeed = 1;
+	 	stallSpeed = .2;
 	 	
 	 	System.out.println("top: " + top);
 	 	System.out.println("bottom:" + bottom);
@@ -43,7 +45,6 @@ public class ArmSubsystem extends Subsystem{
 		{
 //	    	armSetter();
 	    	if(top.get()) {
-	    		System.out.println(top.get() + ", moveUp");
 	    		armSlave.follow(armMotor);
 	    		armMotor.set(ControlMode.PercentOutput, motorSpeed);
 	    	}
@@ -55,9 +56,19 @@ public class ArmSubsystem extends Subsystem{
 	    {
 //	    	armSetter();
 	    	if(bottom.get()) {
-	    		System.out.println(bottom.get() + ", moveDown");
 	    		armSlave.follow(armMotor);
 	    		armMotor.set(ControlMode.PercentOutput, -motorSpeed);
+	    	}
+	    	else {
+	    		zeroOut();
+	    	}
+	    }
+	    public void hold() 
+	    {
+//	    	armSetter();
+	    	if(bottom.get()) {
+	    		armSlave.follow(armMotor);
+	    		armMotor.set(ControlMode.PercentOutput, stallSpeed);
 	    	}
 	    	else {
 	    		zeroOut();

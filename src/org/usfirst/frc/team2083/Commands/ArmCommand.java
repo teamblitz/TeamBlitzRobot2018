@@ -9,7 +9,8 @@ public class ArmCommand extends CommandBase{
 	
 	public enum ArmDirection{
 		UP,
-		DOWN
+		DOWN,
+		STAY
 	}
 	
 	ArmDirection direction;
@@ -25,6 +26,8 @@ public class ArmCommand extends CommandBase{
 			case UP:
 				armSubsystem.moveUp(); 
 				break;
+			case STAY:
+				armSubsystem.hold();
 			case DOWN:
 				armSubsystem.moveDown();
 				break;

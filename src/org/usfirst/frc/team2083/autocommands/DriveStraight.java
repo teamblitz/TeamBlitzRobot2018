@@ -8,6 +8,9 @@ public class DriveStraight extends CommandBase{
 	long duration;
 	long startTime;
 	double voltage;
+	double voltageAccommodater = .5;		//Because our robot is part of the alt-right (or at least leans to the right)
+											//Tests: VA Value | Distance | Avg. Deviation | Trials (Deviation to the Right, Negative is Left)
+											//	     50%		30' 	   6"/30'; 1"/~5'  	10", 12", -1", -10", 19"
 	
     public DriveStraight(long duration, double voltage)
     {
@@ -30,13 +33,14 @@ public class DriveStraight extends CommandBase{
     	if(System.currentTimeMillis() - startTime < duration )
     	{
     		driveSubsystem.setRightVoltage(voltage);
-    		driveSubsystem.setLeftVoltage(voltage);
+    		driveSubsystem.setLeftVoltage(voltage * voltageAccommodater);
     	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished()
     {
+    	System.out.println("is finished");
         return System.currentTimeMillis() - startTime > duration;
     }
 

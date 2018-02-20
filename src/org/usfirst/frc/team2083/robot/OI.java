@@ -17,18 +17,19 @@ public class OI {
 	Button RBumper = RobotMap.RBumper;
 	Button LBumper = RobotMap.LBumper;
 	Button ButtonB = RobotMap.ButtonB;
-	
+	Button ButtonX = RobotMap.ButtonX;
 	
 	
 	
     public OI(){
        ButtonA.whileHeld(new ArmCommand(ArmCommand.ArmDirection.DOWN));
        ButtonY.whileHeld(new ArmCommand(ArmCommand.ArmDirection.UP));
+       ButtonB.whileHeld(new ArmCommand(ArmCommand.ArmDirection.STAY));
        ButtonStart.whenPressed(new GrappleCommand(GrappleCommand.Options.START));
        ButtonBack.whenPressed(new GrappleCommand(GrappleCommand.Options.BACK));
-       ButtonB.whenPressed(new GrappleCommand(GrappleCommand.Options.EXIT));
-       RBumper.whenPressed(new GripperCommand(GripperCommand.WheelDirection.OUT));
-       LBumper.whenPressed(new GripperCommand(GripperCommand.WheelDirection.IN));
+       ButtonX.whenPressed(new GrappleCommand(GrappleCommand.Options.EXIT));
+       RBumper.whenPressed(new GripperCommand(GripperCommand.WheelDirection.IN));
+       LBumper.whenPressed(new GripperCommand(GripperCommand.WheelDirection.OUT));
        RBumper.whenReleased(new GripperCommand(GripperCommand.WheelDirection.STOP));
        LBumper.whenReleased(new GripperCommand(GripperCommand.WheelDirection.STOP));
     }
