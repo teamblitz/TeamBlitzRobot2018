@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
-
+ 
 public class RobotMap { //Where all the cool kid IDs hang out
 	
 	/*
@@ -72,6 +72,8 @@ public class RobotMap { //Where all the cool kid IDs hang out
 		//Encoders
 		
 		//Limit Switch IDs
+		public static DigitalInput WristPositionLower = new DigitalInput(1);				//0
+		public static DigitalInput WristPositionUpper = new DigitalInput(8);	
 		public static DigitalInput ArmPositionLower = new DigitalInput(0);				//0
 		public static DigitalInput ArmPositionUpper = new DigitalInput(9);				//9
 

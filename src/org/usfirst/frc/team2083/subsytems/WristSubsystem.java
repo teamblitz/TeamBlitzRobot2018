@@ -1,4 +1,5 @@
 package org.usfirst.frc.team2083.subsytems;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 import org.usfirst.frc.team2083.robot.RobotMap;
@@ -11,9 +12,14 @@ public class WristSubsystem extends Subsystem {
 	public WPI_TalonSRX wristMotor;
 	public WPI_TalonSRX wristSlave;
 	
+	DigitalInput top;
+	DigitalInput bottom;
+	
 	public WristSubsystem() {
 		super("Wrist Subsystem");
 		
+		top = RobotMap.WristPositionUpper;
+	    bottom = RobotMap.WristPositionLower;
 		wristMotor = RobotMap.wristMotor;
 		wristSlave = RobotMap.wristSlave;
 	}
@@ -29,6 +35,23 @@ public class WristSubsystem extends Subsystem {
 	public void disable() {
 		wristMotor.disable();
 		wristSlave.disable();
+	}
+	
+	public void moveUp() {
+    	if(top.get()) {
+    		setVoltage(1);
+    	}
+    	else {
+    		setVoltage(0);
+    	}
+	}
+	public void moveDown() {
+    	if(bottom.get()) {
+    		setVoltage(-1);
+    	}
+    	else {
+    		setVoltage(0);
+    	}
 	}
 	
 	public void setVoltage(double aVoltage) {
