@@ -10,7 +10,6 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 public class WristSubsystem extends Subsystem {
 	
 	public WPI_TalonSRX wristMotor;
-	public WPI_TalonSRX wristSlave;
 	
 	DigitalInput top;
 	DigitalInput bottom;
@@ -21,7 +20,6 @@ public class WristSubsystem extends Subsystem {
 		top = RobotMap.WristPositionUpper;
 	    bottom = RobotMap.WristPositionLower;
 		wristMotor = RobotMap.wristMotor;
-		wristSlave = RobotMap.wristSlave;
 	}
 	
 	protected void intDefaultCommand() {
@@ -29,12 +27,10 @@ public class WristSubsystem extends Subsystem {
 	
 	public void enableControl() {
 		wristMotor.set(ControlMode.PercentOutput, 0);
-		wristSlave.set(ControlMode.PercentOutput, 0);
 	}
 	
 	public void disable() {
 		wristMotor.disable();
-		wristSlave.disable();
 	}
 	
 	public void moveUp() {
@@ -45,6 +41,7 @@ public class WristSubsystem extends Subsystem {
     		setVoltage(0);
     	}
 	}
+	
 	public void moveDown() {
     	if(bottom.get()) {
     		setVoltage(-1);
@@ -56,7 +53,6 @@ public class WristSubsystem extends Subsystem {
 	
 	public void setVoltage(double aVoltage) {
 		wristMotor.set(ControlMode.PercentOutput, aVoltage);
-		wristSlave.follow(wristMotor);
 		System.out.println("Voltage Set" + aVoltage);
 	}
 

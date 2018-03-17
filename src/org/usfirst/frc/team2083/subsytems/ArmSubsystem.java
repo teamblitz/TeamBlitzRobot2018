@@ -4,7 +4,6 @@ import org.usfirst.frc.team2083.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -14,7 +13,6 @@ public class ArmSubsystem extends Subsystem {
 	public double motorSpeed;
 	public double stallSpeed;
 	WPI_TalonSRX armMotor;
-	WPI_VictorSPX armSlave;
 	
 	DigitalInput top;
 	DigitalInput bottom;
@@ -24,7 +22,6 @@ public class ArmSubsystem extends Subsystem {
 	    top = RobotMap.ArmPositionUpper;
 	    bottom = RobotMap.ArmPositionLower;
 	 	armMotor = RobotMap.armMotor;
-	 	armSlave = RobotMap.armSlave;
 	 	motorSpeed = .7;
 	 	stallSpeed = .2;
 	 	
@@ -44,7 +41,6 @@ public class ArmSubsystem extends Subsystem {
 	{
 //	    armSetter();
     	if(top.get()) {
-    		armSlave.follow(armMotor);
     		armMotor.set(ControlMode.PercentOutput, motorSpeed);
     	}
     	else {
@@ -56,7 +52,6 @@ public class ArmSubsystem extends Subsystem {
     {
 //	    armSetter();
     	if(bottom.get()) {
-    		armSlave.follow(armMotor);
     		armMotor.set(ControlMode.PercentOutput, -motorSpeed);
     	}
     	else {
@@ -68,7 +63,6 @@ public class ArmSubsystem extends Subsystem {
     {
 //	    armSetter();
     	if(bottom.get()) {
-    		armSlave.follow(armMotor);
     		armMotor.set(ControlMode.PercentOutput, stallSpeed);
     	}
     	else {
@@ -79,7 +73,6 @@ public class ArmSubsystem extends Subsystem {
     public void zeroOut() 
     {
 //	    armSetter();
-		armSlave.set(ControlMode.PercentOutput, 0);
 		armMotor.set(ControlMode.PercentOutput, 0);
     }
     

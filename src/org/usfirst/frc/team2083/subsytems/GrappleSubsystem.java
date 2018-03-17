@@ -8,7 +8,8 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 
-public class GrappleSubsystem extends Subsystem{
+public class GrappleSubsystem extends Subsystem {
+	
 	public double joystick;
 	public double joystickThreshold;
 	public WPI_TalonSRX  winchMotor;

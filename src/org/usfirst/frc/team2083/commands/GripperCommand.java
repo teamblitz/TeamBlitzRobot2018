@@ -1,7 +1,8 @@
 package org.usfirst.frc.team2083.commands;
 
 public class GripperCommand extends CommandBase {
-	public enum WheelDirection{
+
+	public enum WheelDirection {
 		OUT,
 		IN,
 		STOP
