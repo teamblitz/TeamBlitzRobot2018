@@ -12,18 +12,6 @@ public class DriveCommand extends CommandBase
 		pidControl = false;
 	}
 
-	public void enableControl()
-	{
-		// Call "enableControl" in DriveSubsytem.java
-		driveSubsystem.enableControl();
-	}
-
-	public void disableControl()
-	{
-		// Call "disableControl" in DriveSubsystem.java
-		driveSubsystem.disableControl();
-	}
-
 	@Override
 	protected void initialize()
 	{
@@ -90,19 +78,32 @@ public class DriveCommand extends CommandBase
 	@Override
 	protected boolean isFinished()
 	{
-
 		return false;
 	}
 
 	@Override
 	protected void end()
 	{
+		super.end();
 		System.out.println("Drive System Ended");
 	}
 
 	@Override
 	protected void interrupted()
 	{
+		super.interrupted();
 		System.out.println("Drive System Interuppted");
+	}
+	
+	public void enableControl()
+	{
+		// Call "enableControl" in DriveSubsytem.java
+		driveSubsystem.enableControl();
+	}
+
+	public void disableControl()
+	{
+		// Call "disableControl" in DriveSubsystem.java
+		driveSubsystem.disableControl();
 	}
 }

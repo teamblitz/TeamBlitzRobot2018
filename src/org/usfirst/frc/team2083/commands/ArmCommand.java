@@ -38,11 +38,24 @@ public class ArmCommand extends CommandBase
 		}
 	}
 
+
+	@Override
+	protected boolean isFinished()
+	{
+		return false;
+	}
+
 	@Override
 	protected void end()
 	{
 		armSubsystem.zeroOut();
 		super.end();
+	}
+
+	@Override
+	protected void interrupted()
+	{
+		super.interrupted();
 	}
 
 	public static void enableControl()
@@ -53,11 +66,5 @@ public class ArmCommand extends CommandBase
 	public void disableControl()
 	{
 		armSubsystem.disableControl();
-	}
-
-	@Override
-	protected boolean isFinished()
-	{
-		return false;
 	}
 }

@@ -44,11 +44,13 @@ public class WristCommand extends CommandBase
 	@Override
 	protected void end()
 	{
+		super.end();
 	}
 
 	@Override
 	protected void interrupted()
 	{
+		super.interrupted();
 		System.out.println("Wrist Interuppted!");
 	}
 }

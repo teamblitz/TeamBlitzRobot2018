@@ -29,6 +29,12 @@ public class GrappleCommand extends CommandBase
 	}
 
 	@Override
+	protected void initialize()
+	{
+		super.initialize();
+	}
+
+	@Override
 	protected void execute()
 	{
 		switch (state)
@@ -55,8 +61,14 @@ public class GrappleCommand extends CommandBase
 	}
 
 	@Override
-	protected void initialize()
+	protected void end()
 	{
-		super.initialize();
+		super.end();
+	}
+
+	@Override
+	protected void interrupted()
+	{
+		super.interrupted();
 	}
 }
