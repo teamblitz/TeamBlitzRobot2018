@@ -14,15 +14,18 @@ public class GrappleCommand extends CommandBase
 	Options state;
 	public double joystick;
 
-	public GrappleCommand(Options state)
-	{
-		requires(grappleSubsystem);
-		this.state = state;
-	}
-
 	public GrappleCommand()
 	{
+		super("GrappleCommand");
+		requires(grappleSubsystem);
 		joystick = RobotMap.RightJoystickVertical;
+	}
+
+	public GrappleCommand(Options state)
+	{
+		super("GrappleCommand");
+		requires(grappleSubsystem);
+		this.state = state;
 	}
 
 	protected void execute()

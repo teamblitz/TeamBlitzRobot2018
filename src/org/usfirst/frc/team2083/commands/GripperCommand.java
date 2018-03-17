@@ -13,6 +13,7 @@ public class GripperCommand extends CommandBase
 
 	public GripperCommand(WheelDirection state)
 	{
+		super("GripperCommand");
 		requires(gripperSubsystem);
 		this.state = state;
 	}

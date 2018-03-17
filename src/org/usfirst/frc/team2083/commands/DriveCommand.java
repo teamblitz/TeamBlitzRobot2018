@@ -6,27 +6,32 @@ public class DriveCommand extends CommandBase
 	public boolean	pidControl;
 
 	public DriveCommand()
-	{ // Check that the driveSubsystem is accessible
+	{
+		super("DriveCommand");		
 		requires(driveSubsystem);
 		pidControl = false;
 	}
 
 	public void enableControl()
-	{ // Call "enableControl" in DriveSubsytem.java
+	{
+		// Call "enableControl" in DriveSubsytem.java
 		driveSubsystem.enableControl();
 	}
 
 	public void disableControl()
-	{ // Call "disableControl" in DriveSubsystem.java
+	{
+		// Call "disableControl" in DriveSubsystem.java
 		driveSubsystem.disableControl();
 	}
 
 	protected void initialize()
-	{ // ???
+	{
+		// ???
 	}
 
 	protected void execute()
-	{ // Taking into account threshold amount and joystick positions, set the voltage
+	{
+		// Taking into account threshold amount and joystick positions, set the voltage
 		// to the desired amount
 		double x = 0, y = 0;
 

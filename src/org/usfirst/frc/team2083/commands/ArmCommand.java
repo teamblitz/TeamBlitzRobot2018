@@ -11,6 +11,7 @@ public class ArmCommand extends CommandBase
 
 	public ArmCommand(ArmDirection direction)
 	{
+		super("ArmCommand");
 		requires(armSubsystem);
 		this.direction = direction;
 	}

@@ -7,6 +7,7 @@ public class WristCommand extends CommandBase
 
 	public WristCommand()
 	{
+		super("WristCommand");
 		requires(wristSubsystem);
 	}
 
