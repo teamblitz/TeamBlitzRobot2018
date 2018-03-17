@@ -20,6 +20,7 @@ public class GripperSubsystem extends Subsystem
 		gripperMotor = RobotMap.gripperMotor;
 	}
 
+	@Override
 	protected void initDefaultCommand()
 	{
 	}

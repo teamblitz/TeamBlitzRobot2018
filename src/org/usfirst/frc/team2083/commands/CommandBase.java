@@ -24,13 +24,13 @@ public abstract class CommandBase extends Command
 		oi = new OI();
 	}
 
-	public CommandBase(String name)
-	{
-		super(name);
-	}
-
 	public CommandBase()
 	{
 		super();
+	}
+
+	public CommandBase(String name)
+	{
+		super(name);
 	}
 }

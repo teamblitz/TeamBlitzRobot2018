@@ -10,7 +10,6 @@ package org.usfirst.frc.team2083.robot;
 import org.usfirst.frc.team2083.autocommands.DriveStraight;
 import org.usfirst.frc.team2083.commands.CommandBase;
 import org.usfirst.frc.team2083.commands.DriveCommand;
-import org.usfirst.frc.team2083.commands.GrappleCommand;
 import org.usfirst.frc.team2083.commands.WristCommand;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -68,7 +67,7 @@ public class Robot extends IterativeRobot
 	@Override
 	public void teleopInit()
 	{
-		GrappleCommand.grappleSubsystem.start();
+		CommandBase.grappleSubsystem.start();
 		driveCommand.enableControl();
 		driveCommand.start();
 		wristCommand.start();

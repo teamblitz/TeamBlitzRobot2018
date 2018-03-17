@@ -26,6 +26,7 @@ public class GrappleSubsystem extends Subsystem
 		winchRelativePosition = 0;
 	}
 
+	@Override
 	protected void initDefaultCommand()
 	{
 

@@ -11,10 +11,12 @@ public class WristCommand extends CommandBase
 		requires(wristSubsystem);
 	}
 
+	@Override
 	protected void initialize()
 	{
 	}
 
+	@Override
 	protected void execute()
 	{
 		double POV = oi.getMotorWristValue();
@@ -39,10 +41,12 @@ public class WristCommand extends CommandBase
 		return false;
 	}
 
+	@Override
 	protected void end()
 	{
 	}
 
+	@Override
 	protected void interrupted()
 	{
 		System.out.println("Wrist Interuppted!");

@@ -83,6 +83,7 @@ public class ArmSubsystem extends Subsystem
 		armMotor.set(ControlMode.PercentOutput, 0);
 	}
 
+	@Override
 	protected void initDefaultCommand()
 	{
 		System.out.println("Arm 'Initiate Default Command'");

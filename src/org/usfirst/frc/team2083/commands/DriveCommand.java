@@ -24,11 +24,13 @@ public class DriveCommand extends CommandBase
 		driveSubsystem.disableControl();
 	}
 
+	@Override
 	protected void initialize()
 	{
 		// ???
 	}
 
+	@Override
 	protected void execute()
 	{
 		// Taking into account threshold amount and joystick positions, set the voltage
@@ -92,11 +94,13 @@ public class DriveCommand extends CommandBase
 		return false;
 	}
 
+	@Override
 	protected void end()
 	{
 		System.out.println("Drive System Ended");
 	}
 
+	@Override
 	protected void interrupted()
 	{
 		System.out.println("Drive System Interuppted");

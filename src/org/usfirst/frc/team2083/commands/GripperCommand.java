@@ -18,6 +18,7 @@ public class GripperCommand extends CommandBase
 		this.state = state;
 	}
 
+	@Override
 	protected void execute()
 	{
 		switch (state)

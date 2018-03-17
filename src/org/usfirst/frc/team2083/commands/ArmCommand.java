@@ -16,6 +16,12 @@ public class ArmCommand extends CommandBase
 		this.direction = direction;
 	}
 
+	@Override
+	protected void initialize()
+	{
+	}
+
+	@Override
 	protected void execute()
 	{
 		// super.execute();
@@ -32,9 +38,9 @@ public class ArmCommand extends CommandBase
 		}
 	}
 
+	@Override
 	protected void end()
 	{
-		// Use this
 		armSubsystem.zeroOut();
 		super.end();
 	}
@@ -52,11 +58,6 @@ public class ArmCommand extends CommandBase
 	@Override
 	protected boolean isFinished()
 	{
-		// TODO Auto-generated method stub
 		return false;
-	}
-
-	protected void initialize()
-	{
 	}
 }
