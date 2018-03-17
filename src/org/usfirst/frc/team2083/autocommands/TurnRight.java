@@ -1,6 +1,6 @@
 package org.usfirst.frc.team2083.autocommands;
 
-import org.usfirst.frc.team2083.Commands.CommandBase;
+import org.usfirst.frc.team2083.commands.CommandBase;
 
 public class TurnRight extends CommandBase{
 
@@ -10,7 +10,7 @@ public class TurnRight extends CommandBase{
     public TurnRight(long duration)
     {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        // e.g., requires(chassis);
     	requires(driveSubsystem);
     	this.duration = duration;
     }

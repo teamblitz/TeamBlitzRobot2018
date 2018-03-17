@@ -1,11 +1,11 @@
 package org.usfirst.frc.team2083.robot;
 
-import org.usfirst.frc.team2083.Commands.*;
-import org.usfirst.frc.team2083.robot.RobotMap;
+import org.usfirst.frc.team2083.commands.ArmCommand;
+import org.usfirst.frc.team2083.commands.GrappleCommand;
+import org.usfirst.frc.team2083.commands.GripperCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 public class OI {
 	
@@ -21,32 +21,36 @@ public class OI {
 	
 	
 	
-    public OI(){
+    public OI() {
        ButtonA.whileHeld(new ArmCommand(ArmCommand.ArmDirection.DOWN));
-       ButtonY.whileHeld(new ArmCommand(ArmCommand.ArmDirection.UP));
        ButtonB.whileHeld(new ArmCommand(ArmCommand.ArmDirection.STAY));
+
+       ButtonX.whenPressed(new GrappleCommand(GrappleCommand.Options.EXIT));
+       ButtonY.whileHeld(new ArmCommand(ArmCommand.ArmDirection.UP));
+       
        ButtonStart.whenPressed(new GrappleCommand(GrappleCommand.Options.START));
        ButtonBack.whenPressed(new GrappleCommand(GrappleCommand.Options.BACK));
-       ButtonX.whenPressed(new GrappleCommand(GrappleCommand.Options.EXIT));
+       
        RBumper.whenPressed(new GripperCommand(GripperCommand.WheelDirection.IN));
-       LBumper.whenPressed(new GripperCommand(GripperCommand.WheelDirection.OUT));
        RBumper.whenReleased(new GripperCommand(GripperCommand.WheelDirection.STOP));
+
+       LBumper.whenPressed(new GripperCommand(GripperCommand.WheelDirection.OUT));
        LBumper.whenReleased(new GripperCommand(GripperCommand.WheelDirection.STOP));
     }
     
-    public double getMotorDriveLeftRightValue(){					//Gets horizontal left joystick value (how far it is pushed left or right)
+    public double getMotorDriveLeftRightValue() {					// Gets horizontal left joystick value (how far it is pushed left or right)
     	return xbox.getX();
     }
     
-    public double getMotorDriveForwardBackValue(){					//Gets vertical left joystick value (how far it is pushed up or down)
+    public double getMotorDriveForwardBackValue() {					// Gets vertical left joystick value (how far it is pushed up or down)
     	return -xbox.getY();
     }
    
-    public double getMotorWristValue() {							//Get D-Pad value (how far it is pushed left or right)
+    public double getMotorWristValue() {							// Get D-Pad value (how far it is pushed left or right)
     	return xbox.getPOV();
     }
     
-    public double getMotorGrappleValue() {							//Gets vertical left joystick value (how far it is pushed up or down)
+    public double getMotorGrappleValue() {							// Gets vertical left joystick value (how far it is pushed up or down)
     	return xbox.getRawAxis(5);
     }
     

@@ -1,11 +1,6 @@
-package org.usfirst.frc.team2083.Commands;
+package org.usfirst.frc.team2083.commands;
 
-import org.usfirst.frc.team2083.robot.RobotMap;
-import org.usfirst.frc.team2083.subsytems.ArmSubsystem;
-import org.usfirst.frc.team2083.Commands.CommandBase;
-
-
-public class ArmCommand extends CommandBase{
+public class ArmCommand extends CommandBase {
 	
 	public enum ArmDirection{
 		UP,

@@ -1,16 +1,14 @@
 package org.usfirst.frc.team2083.autocommands;
 
-import org.usfirst.frc.team2083.Commands.CommandBase;
-import org.usfirst.frc.team2083.robot.RobotMap;
-import org.usfirst.frc.team2083.subsytems.DriveSubsystem;
+import org.usfirst.frc.team2083.commands.CommandBase;
 
-public class DriveStraight extends CommandBase{
+public class DriveStraight extends CommandBase {
 	long duration;
 	long startTime;
 	double voltage;
-	double voltageAccommodater = .5;		//Because our robot is part of the alt-right (or at least leans to the right)
-											//Tests: VA Value | Distance | Avg. Deviation | Trials (Deviation to the Right, Negative is Left)
-											//	     50%		30' 	   6"/30'; 1"/~5'  	10", 12", -1", -10", 19"
+	double voltageAccommodater = .5;		// Because our robot is part of the alt-right (or at least leans to the right)
+											// Tests: VA Value | Distance | Avg. Deviation | Trials (Deviation to the Right, Negative is Left)
+											//	      50%		 30' 	    6"/30'; 1"/~5'  	10", 12", -1", -10", 19"
 	
     public DriveStraight(long duration, double voltage)
     {
@@ -56,5 +54,4 @@ public class DriveStraight extends CommandBase{
     protected void interrupted()
     {
     }
-
 }

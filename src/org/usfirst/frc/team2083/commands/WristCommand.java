@@ -1,8 +1,6 @@
-package org.usfirst.frc.team2083.Commands;
+package org.usfirst.frc.team2083.commands;
 
-import org.usfirst.frc.team2083.robot.RobotMap;
-
-public class WristCommand extends CommandBase{
+public class WristCommand extends CommandBase {
 	final int POVThreshold = 15;
 	final double wristSpeed = 0.25;
 	
@@ -31,6 +29,7 @@ public class WristCommand extends CommandBase{
 
 		return false;
 	}
+	
 	protected void end() {
 	}
 	

@@ -7,18 +7,11 @@
 
 package org.usfirst.frc.team2083.robot;
 
-//import org.usfirst.frc.team2083.Commands.ArmCommand;
-
-import org.usfirst.frc.team2083.Commands.CommandBase;
-import org.usfirst.frc.team2083.Commands.DriveCommand;
-import org.usfirst.frc.team2083.Commands.GrappleCommand;
-import org.usfirst.frc.team2083.Commands.WristCommand;
 import org.usfirst.frc.team2083.autocommands.DriveStraight;
-import org.usfirst.frc.team2083.autocommands.TurnLeft;
-import org.usfirst.frc.team2083.autocommands.TurnRight;
-import org.usfirst.frc.team2083.toolkit.OperationalMethods;
-
-import com.ctre.phoenix.motorcontrol.ControlMode;
+import org.usfirst.frc.team2083.commands.CommandBase;
+import org.usfirst.frc.team2083.commands.DriveCommand;
+import org.usfirst.frc.team2083.commands.GrappleCommand;
+import org.usfirst.frc.team2083.commands.WristCommand;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -39,6 +32,7 @@ public class Robot extends IterativeRobot {
 	DriveCommand driveCommand;
 	WristCommand wristCommand;
 	Command autoCommand;
+	
 	@Override
 	public void robotInit() {
 		CommandBase.init();
@@ -55,7 +49,7 @@ public class Robot extends IterativeRobot {
 		autoCommand = new DriveStraight(10000, .3);
 		autoCommand.start();
 	}
-
+	
 	/*
 	 * This function is called periodically during autonomous.
 	 */

@@ -1,9 +1,6 @@
-package org.usfirst.frc.team2083.Commands;
+package org.usfirst.frc.team2083.commands;
 
 import org.usfirst.frc.team2083.robot.RobotMap;
-import org.usfirst.frc.team2083.subsytems.GrappleSubsystem;
-import org.usfirst.frc.team2083.toolkit.OperationalMethods;
-
 
 public class GrappleCommand extends CommandBase {
 	public double joystick;

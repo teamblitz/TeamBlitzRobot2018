@@ -1,9 +1,6 @@
-package org.usfirst.frc.team2083.Commands;
-import org.usfirst.frc.team2083.robot.RobotMap;
-import org.usfirst.frc.team2083.subsytems.GripperSubsystem;
-import org.usfirst.frc.team2083.toolkit.OperationalMethods;
+package org.usfirst.frc.team2083.commands;
 
-public class GripperCommand extends CommandBase{
+public class GripperCommand extends CommandBase {
 	public enum WheelDirection{
 		OUT,
 		IN,
@@ -15,6 +12,7 @@ public class GripperCommand extends CommandBase{
 		requires(gripperSubsystem);
 		this.state = state;
 	}
+	
 	protected void execute() {
 		switch(state) {
 		case OUT:
@@ -30,10 +28,12 @@ public class GripperCommand extends CommandBase{
 			break;
 		}
 	}
+	
 	@Override
 	protected boolean isFinished() {
 		return false;
 	}
+	
 	@Override
 	protected void initialize() {
 		super.initialize();

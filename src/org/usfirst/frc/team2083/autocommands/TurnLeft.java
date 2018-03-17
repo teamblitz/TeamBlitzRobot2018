@@ -1,6 +1,6 @@
 package org.usfirst.frc.team2083.autocommands;
 
-import org.usfirst.frc.team2083.Commands.CommandBase;
+import org.usfirst.frc.team2083.commands.CommandBase;
 
 
 public class TurnLeft extends CommandBase {

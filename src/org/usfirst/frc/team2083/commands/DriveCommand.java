@@ -1,30 +1,26 @@
-package org.usfirst.frc.team2083.Commands;
+package org.usfirst.frc.team2083.commands;
 
-import org.usfirst.frc.team2083.robot.RobotMap;
-import org.usfirst.frc.team2083.subsytems.DriveSubsystem;
-
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-public class DriveCommand extends CommandBase{
+public class DriveCommand extends CommandBase {
 	final double joystickZeroThreshold = 0.15;
 	public boolean pidControl;
-	public DriveCommand() {								//Check that the driveSubsystem is accessible
+	
+	public DriveCommand() {								// Check that the driveSubsystem is accessible
 		requires(driveSubsystem);
 		pidControl = false;
 	}
 	
-	public void enableControl() {						//Call "enableControl" in DriveSubsytem.java
+	public void enableControl() {						// Call "enableControl" in DriveSubsytem.java
 		driveSubsystem.enableControl();
 	}
 	
-	public void disableControl() {						//Call "disableControl" in DriveSubsystem.java
+	public void disableControl() {						// Call "disableControl" in DriveSubsystem.java
 		driveSubsystem.disableControl();
 	}
 	
-	protected void initialize() {						//???
+	protected void initialize() {						// ???
 	}
 	
-	protected void execute(){							//Taking into account threshold amount and joystick positions, set the voltage to the desired amount
+	protected void execute() {							// Taking into account threshold amount and joystick positions, set the voltage to the desired amount
     	double x = 0, y = 0;
 
     	// Get controller input.
