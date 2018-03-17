@@ -11,10 +11,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class DriveSubsystem extends Subsystem
 {
 	public WPI_TalonSRX leftFront;
-	// public WPI_TalonSRX leftBack;
 	public WPI_VictorSPX	leftBack;
 	public WPI_TalonSRX		rightFront;
-	// public WPI_TalonSRX rightBack;
 	public WPI_VictorSPX rightBack;
 
 	public DriveSubsystem()

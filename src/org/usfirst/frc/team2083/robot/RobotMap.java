@@ -21,19 +21,19 @@ public class RobotMap
 	public static WPI_VictorSPX	backLeftMotor	= new WPI_VictorSPX(6);		// 6
 
 	// Arm Motors
-	public static WPI_TalonSRX	armMotor	= new WPI_TalonSRX(8);			// 8
-	public static WPI_VictorSPX	armSlave	= new WPI_VictorSPX(7);			// 7
+	public static WPI_TalonSRX	armMotor		= new WPI_TalonSRX(8);		// 8
+	public static WPI_VictorSPX	armSlave		= new WPI_VictorSPX(7);		// 7
 
 	// Wrist Motors
-	public static WPI_TalonSRX	wristMotor	= new WPI_TalonSRX(9);			// 9
-	public static WPI_TalonSRX	wristSlave	= new WPI_TalonSRX(10);			// 10
+	public static WPI_TalonSRX	wristMotor		= new WPI_TalonSRX(9);		// 9
+	public static WPI_TalonSRX	wristSlave		= new WPI_TalonSRX(10);		// 10
 
 	// Gripper Motors
 	public static WPI_TalonSRX	gripperMotor	= new WPI_TalonSRX(3);		// 3
 	public static WPI_VictorSPX	gripperSlave	= new WPI_VictorSPX(11);	// 11
 
 	// Grapple Motor (for the winch)
-	public static WPI_TalonSRX grappleMotor = new WPI_TalonSRX(4); 			// 4
+	public static WPI_TalonSRX grappleMotor 	= new WPI_TalonSRX(4); 		// 4
 
 	/*
 	 * Joystick IDs
@@ -71,8 +71,8 @@ public class RobotMap
 	// Encoders
 
 	// Limit Switch IDs
-	public static DigitalInput	WristPositionLower	= new DigitalInput(1);	// 0
-	public static DigitalInput	WristPositionUpper	= new DigitalInput(8);	// 8
-	public static DigitalInput	ArmPositionLower	= new DigitalInput(9);	// 0
-	public static DigitalInput	ArmPositionUpper	= new DigitalInput(0);	// 9
+	public static DigitalInput	WristPositionLower	= new DigitalInput(1);		// 0
+	public static DigitalInput	WristPositionUpper	= new DigitalInput(8);		// 8
+	public static DigitalInput	ArmPositionLower	= new DigitalInput(9);		// 0
+	public static DigitalInput	ArmPositionUpper	= new DigitalInput(0);		// 9
 }

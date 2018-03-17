@@ -40,18 +40,18 @@ public class GrappleCommand extends CommandBase
 		switch (state)
 		{
 			case START:
-				grappleSubsystem.DropActive();
+				grappleSubsystem.dropActive();
 				break;
 			case BACK:
-				grappleSubsystem.DropPrep();
+				grappleSubsystem.dropPrep();
 				break;
 			case EXIT:
-				grappleSubsystem.DropExit();
+				grappleSubsystem.dropExit();
 				break;
 			default:
 				break;
 		}
-		grappleSubsystem.WinchControl(oi.getMotorGrappleValue());
+		grappleSubsystem.winchControl(oi.getMotorGrappleValue());
 	}
 
 	@Override

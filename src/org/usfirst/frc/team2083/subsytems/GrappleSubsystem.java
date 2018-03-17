@@ -32,13 +32,13 @@ public class GrappleSubsystem extends Subsystem
 
 	}
 
-	public void DropPrep()
+	public void dropPrep()
 	{
 		System.out.println("Grapple Drop Prep Prepared");
 		dropModePrep = true;
 	}
 
-	public void DropActive()
+	public void dropActive()
 	{
 		if (dropModePrep)
 		{
@@ -51,7 +51,7 @@ public class GrappleSubsystem extends Subsystem
 		}
 	}
 
-	public void DropExit()
+	public void dropExit()
 	{
 		dropModeActive = false;
 		System.out.println("Grapple Drop Prep Exited");
@@ -64,7 +64,7 @@ public class GrappleSubsystem extends Subsystem
 		dropModePrep = false;
 	}
 
-	public void WinchControl(double aVoltage)
+	public void winchControl(double aVoltage)
 	{
 		if (dropModeActive && Math.abs(aVoltage) > joystickThreshold)
 		{
