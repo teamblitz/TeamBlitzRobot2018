@@ -25,7 +25,7 @@ public class ArmSubsystem extends Subsystem{
 	    bottom = RobotMap.ArmPositionLower;
 	 	armMotor = RobotMap.armMotor;
 	 	armSlave = RobotMap.armSlave;
-	 	motorSpeed = 1;
+	 	motorSpeed = .7;
 	 	stallSpeed = .2;
 	 	
 	 	System.out.println("top: " + top);

@@ -74,7 +74,7 @@ public class RobotMap { //Where all the cool kid IDs hang out
 		//Limit Switch IDs
 		public static DigitalInput WristPositionLower = new DigitalInput(1);				//0
 		public static DigitalInput WristPositionUpper = new DigitalInput(8);	
-		public static DigitalInput ArmPositionLower = new DigitalInput(0);				//0
-		public static DigitalInput ArmPositionUpper = new DigitalInput(9);				//9
+		public static DigitalInput ArmPositionLower = new DigitalInput(9);				//0
+		public static DigitalInput ArmPositionUpper = new DigitalInput(0);				//9
 
 }

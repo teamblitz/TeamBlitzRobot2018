@@ -16,10 +16,10 @@ public class WristCommand extends CommandBase{
 	protected void execute() {
 		double POV = oi.getMotorWristValue();
 		if(POV == 0) {
-			wristSubsystem.setVoltage(1);
+			wristSubsystem.moveUp();
 		}
 		else if(POV == 180) {
-			wristSubsystem.setVoltage(-1);
+			wristSubsystem.moveDown();
 		}		
 		else {
 			wristSubsystem.setVoltage(0);
