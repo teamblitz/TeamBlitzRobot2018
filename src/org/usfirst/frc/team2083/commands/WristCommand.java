@@ -1,7 +1,7 @@
 package org.usfirst.frc.team2083.commands;
 
 public class WristCommand extends CommandBase {
-	final int POVThreshold = 15;
+	final int povThreshold = 15;
 	final double wristSpeed = 0.25;
 	
 	public WristCommand() {

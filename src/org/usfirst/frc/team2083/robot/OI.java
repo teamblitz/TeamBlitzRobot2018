@@ -19,8 +19,6 @@ public class OI {
 	Button ButtonB = RobotMap.ButtonB;
 	Button ButtonX = RobotMap.ButtonX;
 	
-	
-	
     public OI() {
        ButtonA.whileHeld(new ArmCommand(ArmCommand.ArmDirection.DOWN));
        ButtonB.whileHeld(new ArmCommand(ArmCommand.ArmDirection.STAY));
