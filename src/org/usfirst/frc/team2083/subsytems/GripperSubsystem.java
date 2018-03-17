@@ -15,7 +15,7 @@ public class GripperSubsystem extends Subsystem
 
 	public GripperSubsystem()
 	{
-		super("Gripper Subsystem");
+		super("GripperSubsystem");
 
 		gripperMotor = RobotMap.gripperMotor;
 	}

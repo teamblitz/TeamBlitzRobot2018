@@ -18,6 +18,8 @@ public class GrappleSubsystem extends Subsystem
 
 	public GrappleSubsystem()
 	{
+		super("GrappleSubsystem");
+		
 		winchMotor = RobotMap.grappleMotor;
 		joystick = RobotMap.RightJoystickVertical;
 		joystickThreshold = 0.3;

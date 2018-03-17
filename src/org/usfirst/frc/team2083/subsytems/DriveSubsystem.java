@@ -10,16 +10,15 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class DriveSubsystem extends Subsystem
 {
-	public WPI_TalonSRX leftFront;
+	public WPI_TalonSRX		leftFront;
 	public WPI_VictorSPX	leftBack;
+	
 	public WPI_TalonSRX		rightFront;
-	public WPI_VictorSPX rightBack;
+	public WPI_VictorSPX	rightBack;
 
 	public DriveSubsystem()
 	{
-		// Link generic variable names to the Robot.map, which contains their true ID
-		// values
-		super("Drive Subsystem");
+		super("DriveSubsystem");
 
 		leftFront = RobotMap.frontLeftMotor;
 		leftBack = RobotMap.backLeftMotor;

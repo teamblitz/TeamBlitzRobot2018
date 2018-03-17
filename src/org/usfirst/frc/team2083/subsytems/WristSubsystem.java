@@ -17,7 +17,7 @@ public class WristSubsystem extends Subsystem
 
 	public WristSubsystem()
 	{
-		super("Wrist Subsystem");
+		super("WristSubsystem");
 
 		top = RobotMap.WristPositionUpper;
 		bottom = RobotMap.WristPositionLower;

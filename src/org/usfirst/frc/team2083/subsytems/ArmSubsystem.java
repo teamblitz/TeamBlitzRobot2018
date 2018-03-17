@@ -19,7 +19,8 @@ public class ArmSubsystem extends Subsystem
 
 	public ArmSubsystem()
 	{
-		super();
+		super("ArmSubsystem");
+		
 		top = RobotMap.ArmPositionUpper;
 		bottom = RobotMap.ArmPositionLower;
 		armMotor = RobotMap.armMotor;
