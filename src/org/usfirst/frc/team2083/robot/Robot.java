@@ -24,37 +24,41 @@ import edu.wpi.first.wpilibj.command.Scheduler;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
-public class Robot extends IterativeRobot {
+public class Robot extends IterativeRobot
+{
 	/*
-	 * This function is run when the robot is first started up and should be
-	 * used for any initialization code.
+	 * This function is run when the robot is first started up and should be used
+	 * for any initialization code.
 	 */
-	DriveCommand driveCommand;
-	WristCommand wristCommand;
-	Command autoCommand;
-	
+	DriveCommand	driveCommand;
+	WristCommand	wristCommand;
+	Command			autoCommand;
+
 	@Override
-	public void robotInit() {
+	public void robotInit()
+	{
 		CommandBase.init();
-        driveCommand = new DriveCommand();
-        driveCommand.disableControl();
-        wristCommand = new WristCommand();
+		driveCommand = new DriveCommand();
+		driveCommand.disableControl();
+		wristCommand = new WristCommand();
 	}
 
 	/*
 	 * This function is run once each time the robot enters autonomous mode.
 	 */
 	@Override
-	public void autonomousInit() {
+	public void autonomousInit()
+	{
 		autoCommand = new DriveStraight(10000, .3);
 		autoCommand.start();
 	}
-	
+
 	/*
 	 * This function is called periodically during autonomous.
 	 */
 	@Override
-	public void autonomousPeriodic() {
+	public void autonomousPeriodic()
+	{
 		Scheduler.getInstance().run();
 	}
 
@@ -62,20 +66,23 @@ public class Robot extends IterativeRobot {
 	 * This function is called once each time the robot enters teleoperated mode.
 	 */
 	@Override
-	public void teleopInit() {
+	public void teleopInit()
+	{
 		GrappleCommand.grappleSubsystem.start();
 		driveCommand.enableControl();
 		driveCommand.start();
 		wristCommand.start();
-		
+
 	}
 
 	@Override
-	public void teleopPeriodic() {
+	public void teleopPeriodic()
+	{
 		Scheduler.getInstance().run();
 	}
-	
+
 	@Override
-	public void testPeriodic() {
+	public void testPeriodic()
+	{
 	}
 }

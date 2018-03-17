@@ -2,56 +2,58 @@ package org.usfirst.frc.team2083.autocommands;
 
 import org.usfirst.frc.team2083.commands.CommandBase;
 
-public class DriveStraight extends CommandBase {
-	long duration;
-	long startTime;
-	double voltage;
-	double voltageAccommodater = .5;		// Because our robot is part of the alt-right (or at least leans to the right)
-											// Tests: VA Value | Distance | Avg. Deviation | Trials (Deviation to the Right, Negative is Left)
-											//	      50%		 30' 	    6"/30'; 1"/~5'  	10", 12", -1", -10", 19"
-	
-    public DriveStraight(long duration, double voltage)
-    {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(driveSubsystem);
-    	this.voltage = voltage;
-    	this.duration = duration;
-    }
+public class DriveStraight extends CommandBase
+{
+	long	duration;
+	long	startTime;
+	double	voltage;
+	double	voltageAccommodater	= .5;	// Because our robot is part of the alt-right (or at least leans to the right)
+										// Tests: VA Value | Distance | Avg. Deviation | Trials (Deviation to the Right,
+										// Negative is Left)
+										// 50% 30' 6"/30'; 1"/~5' 10", 12", -1", -10", 19"
 
-    // Called just before this Command runs the first time
-    protected void initialize()
-    {
-    	startTime = System.currentTimeMillis();
-    }
+	public DriveStraight(long duration, double voltage)
+	{
+		// Use requires() here to declare subsystem dependencies
+		// eg. requires(chassis);
+		requires(driveSubsystem);
+		this.voltage = voltage;
+		this.duration = duration;
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute()
-    {
-    	if(System.currentTimeMillis() - startTime < duration )
-    	{
-    		driveSubsystem.setRightVoltage(voltage);
-    		driveSubsystem.setLeftVoltage(voltage * voltageAccommodater);
-    	}
-    }
+	// Called just before this Command runs the first time
+	protected void initialize()
+	{
+		startTime = System.currentTimeMillis();
+	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished()
-    {
-    	System.out.println("is finished");
-        return System.currentTimeMillis() - startTime > duration;
-    }
+	// Called repeatedly when this Command is scheduled to run
+	protected void execute()
+	{
+		if (System.currentTimeMillis() - startTime < duration)
+		{
+			driveSubsystem.setRightVoltage(voltage);
+			driveSubsystem.setLeftVoltage(voltage * voltageAccommodater);
+		}
+	}
 
-    // Called once after isFinished returns true
-    protected void end()
-    {
-    	driveSubsystem.setRightVoltage(0);
+	// Make this return true when this Command no longer needs to run execute()
+	protected boolean isFinished()
+	{
+		System.out.println("is finished");
+		return System.currentTimeMillis() - startTime > duration;
+	}
+
+	// Called once after isFinished returns true
+	protected void end()
+	{
+		driveSubsystem.setRightVoltage(0);
 		driveSubsystem.setLeftVoltage(0);
-    }
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted()
-    {
-    }
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	protected void interrupted()
+	{
+	}
 }

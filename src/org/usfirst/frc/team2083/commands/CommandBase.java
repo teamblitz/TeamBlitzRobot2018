@@ -9,25 +9,28 @@ import org.usfirst.frc.team2083.subsytems.WristSubsystem;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public abstract class CommandBase extends Command {
+public abstract class CommandBase extends Command
+{
+	public static DriveSubsystem	driveSubsystem		= new DriveSubsystem();
+	public static ArmSubsystem		armSubsystem		= new ArmSubsystem();
+	public static GrappleSubsystem	grappleSubsystem	= new GrappleSubsystem();
+	public static GripperSubsystem	gripperSubsystem	= new GripperSubsystem();
+	public static WristSubsystem	wristSubsystem		= new WristSubsystem();
 
-	public static DriveSubsystem driveSubsystem = new DriveSubsystem();
-    public static ArmSubsystem armSubsystem = new ArmSubsystem();
-    public static GrappleSubsystem grappleSubsystem = new GrappleSubsystem();
-    public static GripperSubsystem gripperSubsystem = new GripperSubsystem();
-    public static WristSubsystem wristSubsystem = new WristSubsystem();
-    
 	public static OI oi;
-	
-	public static void init() {
+
+	public static void init()
+	{
 		oi = new OI();
 	}
-	
-	public CommandBase(String name) {
+
+	public CommandBase(String name)
+	{
 		super(name);
 	}
-	
-	public CommandBase() {
+
+	public CommandBase()
+	{
 		super();
 	}
 }

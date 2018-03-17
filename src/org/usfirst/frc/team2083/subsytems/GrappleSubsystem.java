@@ -7,17 +7,17 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
+public class GrappleSubsystem extends Subsystem
+{
+	public double		joystick;
+	public double		joystickThreshold;
+	public WPI_TalonSRX	winchMotor;
+	public boolean		dropModePrep;
+	public boolean		dropModeActive;
+	public double		winchRelativePosition;
 
-public class GrappleSubsystem extends Subsystem {
-	
-	public double joystick;
-	public double joystickThreshold;
-	public WPI_TalonSRX  winchMotor;
-	public boolean dropModePrep;
-	public boolean dropModeActive;
-	public double winchRelativePosition;
-	
-	public GrappleSubsystem() {
+	public GrappleSubsystem()
+	{
 		winchMotor = RobotMap.grappleMotor;
 		joystick = RobotMap.RightJoystickVertical;
 		joystickThreshold = 0.3;
@@ -25,17 +25,22 @@ public class GrappleSubsystem extends Subsystem {
 		dropModeActive = false;
 		winchRelativePosition = 0;
 	}
-	
-	protected void initDefaultCommand() {
+
+	protected void initDefaultCommand()
+	{
 
 	}
 
-	public void DropPrep() {
+	public void DropPrep()
+	{
 		System.out.println("Grapple Drop Prep Prepared");
 		dropModePrep = true;
 	}
-	public void DropActive() {
-		if(dropModePrep) {
+
+	public void DropActive()
+	{
+		if (dropModePrep)
+		{
 			dropModeActive = true;
 			System.out.println("Grapple Drop Prep Active");
 		}
@@ -44,27 +49,33 @@ public class GrappleSubsystem extends Subsystem {
 			System.out.println("Grapple Drop Prep Failed to Activate");
 		}
 	}
-	public void DropExit() {
+
+	public void DropExit()
+	{
 		dropModeActive = false;
 		System.out.println("Grapple Drop Prep Exited");
 	}
-	
-	public void start() {
+
+	public void start()
+	{
 		System.out.println("Grapple Drop Prep Started");
 		dropModeActive = false;
 		dropModePrep = false;
 	}
-	
-	public void WinchControl(double aVoltage) {
-		if(dropModeActive &&  Math.abs(aVoltage) > joystickThreshold){
+
+	public void WinchControl(double aVoltage)
+	{
+		if (dropModeActive && Math.abs(aVoltage) > joystickThreshold)
+		{
 			winchMotor.set(ControlMode.PercentOutput, aVoltage);
 			winchRelativePosition = winchRelativePosition + aVoltage;
-			System.out.println("Winch moved to relative position " + winchRelativePosition );
+			System.out.println("Winch moved to relative position " + winchRelativePosition);
 		}
-		else {
+		else
+		{
 			winchMotor.set(ControlMode.PercentOutput, 0);
 			winchMotor.disable();
-			if(dropModeActive)
+			if (dropModeActive)
 			{
 				System.out.println("Grapple Drop Prep Not Active!");
 			}

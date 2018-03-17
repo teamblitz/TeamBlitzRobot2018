@@ -2,46 +2,57 @@ package org.usfirst.frc.team2083.commands;
 
 import org.usfirst.frc.team2083.robot.RobotMap;
 
-public class GrappleCommand extends CommandBase {
-	public double joystick;
-	public enum Options{
+public class GrappleCommand extends CommandBase
+{
+	public enum Options
+	{
 		START,
 		BACK,
 		EXIT
 	}
-	 Options state;
-	
-	public GrappleCommand(Options state) {
+
+	Options state;
+	public double joystick;
+
+	public GrappleCommand(Options state)
+	{
 		requires(grappleSubsystem);
 		this.state = state;
 	}
-	public GrappleCommand() {
+
+	public GrappleCommand()
+	{
 		joystick = RobotMap.RightJoystickVertical;
 	}
-	protected void execute() {
-		switch (state) {
-		case START:
-			grappleSubsystem.DropActive();
-			break;
-		case BACK:
-			grappleSubsystem.DropPrep();
-			break;
-		case EXIT:
-			grappleSubsystem.DropExit();
-			break;
-		default:
-			break;
+
+	protected void execute()
+	{
+		switch (state)
+		{
+			case START:
+				grappleSubsystem.DropActive();
+				break;
+			case BACK:
+				grappleSubsystem.DropPrep();
+				break;
+			case EXIT:
+				grappleSubsystem.DropExit();
+				break;
+			default:
+				break;
 		}
 		grappleSubsystem.WinchControl(oi.getMotorGrappleValue());
 	}
+
 	@Override
-	
-	protected boolean isFinished() {
+	protected boolean isFinished()
+	{
 		return false;
 	}
+
 	@Override
-	protected void initialize() {
+	protected void initialize()
+	{
 		super.initialize();
 	}
-	
 }

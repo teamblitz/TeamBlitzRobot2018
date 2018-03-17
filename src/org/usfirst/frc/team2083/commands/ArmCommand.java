@@ -1,25 +1,27 @@
 package org.usfirst.frc.team2083.commands;
 
-public class ArmCommand extends CommandBase {
-	
-	public enum ArmDirection{
-		UP,
-		DOWN,
-		STAY
+public class ArmCommand extends CommandBase
+{
+	public enum ArmDirection
+	{
+		UP, DOWN, STAY
 	}
-	
+
 	ArmDirection direction;
-	
-	public ArmCommand(ArmDirection direction) {
+
+	public ArmCommand(ArmDirection direction)
+	{
 		requires(armSubsystem);
 		this.direction = direction;
 	}
-	
-	protected void execute() {
-//		super.execute();
-		switch (direction) {
+
+	protected void execute()
+	{
+		// super.execute();
+		switch (direction)
+		{
 			case UP:
-				armSubsystem.moveUp(); 
+				armSubsystem.moveUp();
 				break;
 			case STAY:
 				armSubsystem.hold();
@@ -29,26 +31,31 @@ public class ArmCommand extends CommandBase {
 		}
 	}
 
-	protected void end() {
-		//Use this
-		armSubsystem.zeroOut(); 
+	protected void end()
+	{
+		// Use this
+		armSubsystem.zeroOut();
 		super.end();
 	}
-		
-	public static void enableControl() {
+
+	public static void enableControl()
+	{
 		armSubsystem.enableControl();
 	}
-	
-	public void disableControl() {
+
+	public void disableControl()
+	{
 		armSubsystem.disableControl();
 	}
-	
+
 	@Override
-	protected boolean isFinished() {
+	protected boolean isFinished()
+	{
 		// TODO Auto-generated method stub
 		return false;
 	}
-	protected void initialize() {
+
+	protected void initialize()
+	{
 	}
 }
-
