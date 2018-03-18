@@ -5,11 +5,26 @@ public class WristCommand extends CommandBase
 	final int		povThreshold	= 15;
 	final double	wristSpeed		= 0.25;
 
+	public enum Positions {
+		UP,
+		DOWN
+	}
+	
+	Positions position;
+	
 	public WristCommand()
 	{
 		super("WristCommand");
 		requires(wristSubsystem);
 	}
+
+	public WristCommand(Positions position)
+	{
+		super("WristCommand");
+		requires(wristSubsystem);
+		this.position = position;
+	}
+
 
 	@Override
 	protected void initialize()
@@ -19,19 +34,19 @@ public class WristCommand extends CommandBase
 	@Override
 	protected void execute()
 	{
-		double POV = oi.getMotorWristValue();
-		if (POV == 0)
-		{
-			wristSubsystem.moveUp();
-		}
-		else if (POV == 180)
-		{
-			wristSubsystem.moveDown();
-		}
-		else
-		{
-			wristSubsystem.setVoltage(0);
-		}
+//		double POV = oi.getMotorWristValue();
+//		if (POV == 0)
+//		{
+//			wristSubsystem.moveUp();
+//		}
+//		else if (POV == 180)
+//		{
+//			wristSubsystem.moveDown();
+//		}
+//		else
+//		{
+//			wristSubsystem.setVoltage(0);
+//		}
 	}
 
 	@Override

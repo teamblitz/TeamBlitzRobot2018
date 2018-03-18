@@ -2,16 +2,16 @@ package org.usfirst.frc.team2083.commands;
 
 public class GripperCommand extends CommandBase
 {
-	public enum WheelDirection
+	public enum Action
 	{
-		OUT,
-		IN,
+		OPEN,
+		CLOSE,
 		STOP
 	}
 
-	WheelDirection state;
+	Action state;
 
-	public GripperCommand(WheelDirection state)
+	public GripperCommand(Action state)
 	{
 		super("GripperCommand");
 		requires(gripperSubsystem);
@@ -29,10 +29,10 @@ public class GripperCommand extends CommandBase
 	{
 		switch (state)
 		{
-			case OUT:
+			case OPEN:
 				gripperSubsystem.gripperOut();
 				break;
-			case IN:
+			case CLOSE:
 				gripperSubsystem.gripperIn();
 				break;
 			case STOP:

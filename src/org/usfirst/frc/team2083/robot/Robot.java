@@ -12,6 +12,7 @@ import org.usfirst.frc.team2083.commands.CommandBase;
 import org.usfirst.frc.team2083.commands.DriveCommand;
 import org.usfirst.frc.team2083.commands.WristCommand;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -48,6 +49,8 @@ public class Robot extends IterativeRobot
 	@Override
 	public void autonomousInit()
 	{
+		loadGameData();
+
 		autoCommand = new DriveStraight(10000, .3);
 		autoCommand.start();
 	}
@@ -83,5 +86,10 @@ public class Robot extends IterativeRobot
 	@Override
 	public void testPeriodic()
 	{
+	}
+
+	void loadGameData()
+	{
+		RobotMap.gameData = DriverStation.getInstance().getGameSpecificMessage();
 	}
 }

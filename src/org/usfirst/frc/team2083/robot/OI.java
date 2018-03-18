@@ -30,11 +30,11 @@ public class OI
 		ButtonStart.whenPressed(new GrappleCommand(GrappleCommand.Options.START));
 		ButtonBack.whenPressed(new GrappleCommand(GrappleCommand.Options.BACK));
 
-		RBumper.whenPressed(new GripperCommand(GripperCommand.WheelDirection.IN));
-		RBumper.whenReleased(new GripperCommand(GripperCommand.WheelDirection.STOP));
+		RBumper.whenPressed(new GripperCommand(GripperCommand.Action.CLOSE));
+		RBumper.whenReleased(new GripperCommand(GripperCommand.Action.STOP));
 
-		LBumper.whenPressed(new GripperCommand(GripperCommand.WheelDirection.OUT));
-		LBumper.whenReleased(new GripperCommand(GripperCommand.WheelDirection.STOP));
+		LBumper.whenPressed(new GripperCommand(GripperCommand.Action.OPEN));
+		LBumper.whenReleased(new GripperCommand(GripperCommand.Action.STOP));
 	}
 
 	public double getMotorDriveLeftRightValue()
