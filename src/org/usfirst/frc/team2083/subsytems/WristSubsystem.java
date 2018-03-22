@@ -30,7 +30,7 @@ public class WristSubsystem extends Subsystem
 
 	public void enableControl()
 	{
-		wristMotor.set(ControlMode.PercentOutput, 0);
+//		wristMotor.set(ControlMode.PercentOutput, 0);
 	}
 
 	public void disable()
@@ -41,31 +41,45 @@ public class WristSubsystem extends Subsystem
 	public void moveUp()
 	{
 		System.out.println(top.get());
-		if (top.get())
+//		if (top.get())
 		{
-			setVoltage(1);
+			double setPt = 0.0 / 360.0 * 4174.8;
+			wristMotor.set(ControlMode.Position, setPt);
+			System.out.println("wrist up");
+			System.out.println("set = " + setPt);
+			System.out.println("err = " + wristMotor.getClosedLoopError(0));
+			System.out.println("vol = " + wristMotor.getMotorOutputVoltage());
+			System.out.println("pos = " + wristMotor.getSensorCollection().getQuadraturePosition());
+//			setVoltage(1);
 		}
-		else
-		{
-			setVoltage(0);
-		}
+//		else
+//		{
+//			setVoltage(0);
+//		}
 	}
 
 	public void moveDown()
 	{
-		if (bottom.get())
+//		if (bottom.get())
 		{
-			setVoltage(-1);
+			double setPt = 180.0 / 360.0 * 4174.8;
+			wristMotor.set(ControlMode.Position, setPt);
+			System.out.println("wrist down");
+			System.out.println("set = " + setPt);
+			System.out.println("err = " + wristMotor.getClosedLoopError(0));
+			System.out.println("vol = " + wristMotor.getMotorOutputVoltage());
+			System.out.println("pos = " + wristMotor.getSensorCollection().getQuadraturePosition());
+//			setVoltage(-1);
 		}
-		else
-		{
-			setVoltage(0);
-		}
+//		else
+//		{
+//			setVoltage(0);
+//		}
 	}
 
 	public void setVoltage(double aVoltage)
 	{
-		wristMotor.set(ControlMode.PercentOutput, aVoltage);
+//		wristMotor.set(ControlMode.PercentOutput, aVoltage);
 	}
 
 	@Override

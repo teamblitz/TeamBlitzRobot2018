@@ -75,19 +75,15 @@ public class Robot extends IterativeRobot
 	{
 		driveCommand.enableControl();
 		driveCommand.start();
-		wristCommand.start();
+//		wristCommand.start();
 
 		RobotMap.armMotor.getSensorCollection().setQuadraturePosition(0, 10);
-
+		RobotMap.wristMotor.getSensorCollection().setQuadraturePosition(0, 10);
 	}
 
 	@Override
 	public void teleopPeriodic()
 	{
-		if (!oi.xbox.getRawButtonPressed(0) && !oi.xbox.getRawButtonPressed(3))
-		{
-			Scheduler.getInstance().add(new WristCommand(WristCommand.Positions.UP));
-		}
 		Scheduler.getInstance().run();
 	}
 

@@ -15,7 +15,6 @@ public class ArmCommand extends CommandBase
 	{
 		super("ArmCommand");
 		requires(armSubsystem);
-//		requires(wristSubsystem);
 		this.direction = direction;
 	}
 
@@ -39,6 +38,7 @@ public class ArmCommand extends CommandBase
 				break;
 			case STAY:
 				armSubsystem.hold();
+				break;
 			case DOWN:
 				armSubsystem.moveDown();
 				if (!RobotMap.ArmPositionLower.get())

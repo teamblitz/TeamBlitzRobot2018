@@ -40,20 +40,17 @@ public class RobotMap
 	static
 	{
 		armMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
-		armMotor.getSensorCollection().setQuadraturePosition(0, 10);
 		armMotor.setSensorPhase(false);
-//		armMotor.setInverted(false);
+		armMotor.setInverted(false);
 		armMotor.configNominalOutputForward(0, 10);
 		armMotor.configNominalOutputReverse(0, 10);
 		armMotor.configPeakOutputForward(1, 10);
 		armMotor.configPeakOutputReverse(-1, 10);
 		armMotor.configAllowableClosedloopError(0, 0, 10);
 		armMotor.config_kF(0, 0.0, 10);
-		armMotor.config_kP(0, 0.1, 10);
+		armMotor.config_kP(0, 10.0, 10);
 		armMotor.config_kI(0, 0.0, 10);
 		armMotor.config_kD(0, 0.0, 10);
-		armMotor.configForwardSoftLimitThreshold(1000, 10);
-		armMotor.configForwardSoftLimitThreshold(-1000, 10);
 		armMotor.setSelectedSensorPosition(0, 0, 10);
 	}
 
@@ -62,8 +59,18 @@ public class RobotMap
 	static
 	{
 		wristMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
-		wristMotor.getSensorCollection().setQuadraturePosition(0, 10);
+		wristMotor.setSensorPhase(true);
 		wristMotor.setInverted(false);
+		wristMotor.configNominalOutputForward(0, 10);
+		wristMotor.configNominalOutputReverse(0, 10);
+		wristMotor.configPeakOutputForward(1, 10);
+		wristMotor.configPeakOutputReverse(-1, 10);
+		wristMotor.configAllowableClosedloopError(0, 0, 10);
+		wristMotor.config_kF(0, 0.0, 10);
+		wristMotor.config_kP(0, 10.0, 10);
+		wristMotor.config_kI(0, 0.0, 10);
+		wristMotor.config_kD(0, 0.0, 10);
+		wristMotor.setSelectedSensorPosition(0, 0, 10);
 	}
 
 	// Gripper Motors

@@ -2,6 +2,7 @@ package org.usfirst.frc.team2083.robot;
 
 import org.usfirst.frc.team2083.commands.ArmCommand;
 import org.usfirst.frc.team2083.commands.GripperCommand;
+import org.usfirst.frc.team2083.commands.WristCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -20,11 +21,13 @@ public class OI
 
 	public OI()
 	{
-		ButtonA.whileHeld(new ArmCommand(ArmCommand.ArmDirection.DOWN));
-		ButtonB.whileHeld(new ArmCommand(ArmCommand.ArmDirection.STAY));
+		ButtonA.whenPressed(new ArmCommand(ArmCommand.ArmDirection.DOWN));
+		//ButtonB.whileHeld(new ArmCommand(ArmCommand.ArmDirection.STAY));
+		ButtonY.whenPressed(new ArmCommand(ArmCommand.ArmDirection.UP));
 
-		ButtonY.whileHeld(new ArmCommand(ArmCommand.ArmDirection.UP));
-
+		ButtonX.whenPressed(new WristCommand(WristCommand.Positions.DOWN));
+		ButtonB.whenPressed(new WristCommand(WristCommand.Positions.UP));
+		
 		RBumper.whenPressed(new GripperCommand(GripperCommand.Action.CLOSE));
 		RBumper.whenReleased(new GripperCommand(GripperCommand.Action.STOP));
 

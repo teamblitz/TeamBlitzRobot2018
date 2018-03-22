@@ -3,7 +3,7 @@ package org.usfirst.frc.team2083.subsytems;
 import org.usfirst.frc.team2083.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -12,7 +12,7 @@ public class ArmSubsystem extends Subsystem
 {
 	public double	motorSpeed;
 	public double	stallSpeed;
-	WPI_TalonSRX	armMotor;
+	TalonSRX	armMotor;
 
 	DigitalInput	top;
 	DigitalInput	bottom;
@@ -42,40 +42,38 @@ public class ArmSubsystem extends Subsystem
 	public void moveUp()
 	{
 		// armSetter();
-		if (top.get())
+		// if (top.get())
 		{
-			armMotor.set(ControlMode.PercentOutput, upwardScaleFactor(armMotor.getSelectedSensorPosition(0), 1440));
-			System.out.println(upwardScaleFactor(armMotor.getSelectedSensorPosition(0), 1440));
+			// armMotor.set(ControlMode.PercentOutput,
+			// upwardScaleFactor(armMotor.getSelectedSensorPosition(0), 1440));
+			armMotor.set(ControlMode.Position, 180.0 / 360.0 * 1440.0);
+			System.out.println("arm up");
+			System.out.println("err = " + armMotor.getClosedLoopError(0));
+			System.out.println("vol = " + armMotor.getMotorOutputVoltage());
+			System.out.println("pos = " + armMotor.getSensorCollection().getQuadraturePosition());
 		}
-		else
-		{
-			zeroOut();
-		}
+		// else
+		// {
+		// zeroOut();
+		// }
 	}
 
 	public void moveDown()
 	{
 		// armSetter();
-		if (bottom.get())
+		// if (bottom.get())
 		{
-			// armMotor.set(ControlMode.Position, 45 * 1440 / 360);
-			// if (armMotor.getControlMode() == ControlMode.Position)
-			// {
-			// System.out.println("err = " + armMotor.getClosedLoopError(0));
-			// System.out.println("pos = " +
-			// armMotor.getSensorCollection().getQuadraturePosition());
-			// System.out.println("vol = " + armMotor.getMotorOutputVoltage());
-			// }
-			// else
-			// {
-			armMotor.set(ControlMode.PercentOutput, -downwardScaleFactor(armMotor.getSelectedSensorPosition(0), 1440));
-			System.out.println(-upwardScaleFactor(armMotor.getSelectedSensorPosition(0), 1440));
+			armMotor.set(ControlMode.Position, 0.0 / 360.0 * 1440.0);
+			System.out.println("arm down");
+			System.out.println("err = " + armMotor.getClosedLoopError(0));
+			System.out.println("vol = " + armMotor.getMotorOutputVoltage());
+			System.out.println("pos = " + armMotor.getSensorCollection().getQuadraturePosition());
 		}
 		// }
-		else
-		{
-			zeroOut();
-		}
+		// else
+		// {
+		// zeroOut();
+		// }
 	}
 
 	public void hold()
@@ -83,7 +81,7 @@ public class ArmSubsystem extends Subsystem
 		// armSetter();
 		if (bottom.get())
 		{
-			armMotor.set(ControlMode.PercentOutput, stallSpeed);
+//			armMotor.set(ControlMode.PercentOutput, stallSpeed);
 		}
 		else
 		{
@@ -111,6 +109,7 @@ public class ArmSubsystem extends Subsystem
 			return 1.0;
 		}
 	}
+
 	double upwardScaleFactor(double currentPosition, int totalUnits)
 	{
 		double topPosition = totalUnits / 2;
@@ -135,7 +134,7 @@ public class ArmSubsystem extends Subsystem
 	public void zeroOut()
 	{
 		// armSetter();
-		armMotor.set(ControlMode.PercentOutput, 0);
+//		armMotor.set(ControlMode.PercentOutput, 0);
 	}
 
 	@Override
@@ -146,13 +145,13 @@ public class ArmSubsystem extends Subsystem
 
 	public void enableControl()
 	{
-		armMotor.set(ControlMode.PercentOutput, 0);
+//		armMotor.set(ControlMode.PercentOutput, 0);
 		System.out.println("Arm Control Enabled");
 	}
 
 	public void disableControl()
 	{
 		System.out.println("Arm Control Disabled");
-		armMotor.disable();
+//		armMotor.disable();
 	}
 }

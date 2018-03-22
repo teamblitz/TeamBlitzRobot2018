@@ -1,8 +1,5 @@
 package org.usfirst.frc.team2083.commands;
 
-import org.usfirst.frc.team2083.robot.Robot;
-import org.usfirst.frc.team2083.robot.RobotMap;
-
 public class WristCommand extends CommandBase
 {
 	final int		povThreshold	= 15;
@@ -37,22 +34,32 @@ public class WristCommand extends CommandBase
 	@Override
 	protected void execute()
 	{
-		double POV = Robot.oi.getMotorWristValue();
-		if (POV == 0)
+		switch (position)
 		{
-			wristSubsystem.moveUp();
-			if (RobotMap.WristPositionUpper.get()) {
-				isFinished();
-			}
+			case UP:
+				wristSubsystem.moveUp();
+				break;
+			case DOWN:
+				wristSubsystem.moveDown();
+				break;
 		}
-		else if (POV == 180)
-		{
-			wristSubsystem.moveDown();
-		}
-		else
-		{
-			wristSubsystem.setVoltage(0);
-		}
+
+		//		double POV = Robot.oi.getMotorWristValue();
+//		if (POV == 0)
+//		{
+//			wristSubsystem.moveUp();
+//			if (RobotMap.WristPositionUpper.get()) {
+//				isFinished();
+//			}
+//		}
+//		else if (POV == 180)
+//		{
+//			wristSubsystem.moveDown();
+//		}
+//		else
+//		{
+//			wristSubsystem.setVoltage(0);
+//		}
 	}
 
 	@Override
