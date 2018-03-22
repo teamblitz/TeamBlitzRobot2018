@@ -116,19 +116,19 @@ public class ArmSubsystem extends Subsystem
 		double topPosition = totalUnits / 2;
 		if (currentPosition <= topPosition / 180 * 120)
 		{
-			return 1.0;
+			return 7.0;
 		}
 		else if (currentPosition <= topPosition / 180 * 140)
 		{
-			return 0.75;
+			return 0.6;
 		}
 		else if (currentPosition <= topPosition / 180 * 170)
 		{
-			return 0.30;
+			return 0.5;
 		}
 		else
 		{
-			return 0.1;
+			return 0.2;
 		}
 	}
 

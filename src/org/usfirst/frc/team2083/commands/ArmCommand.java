@@ -1,5 +1,7 @@
 package org.usfirst.frc.team2083.commands;
 
+import org.usfirst.frc.team2083.robot.RobotMap;
+
 public class ArmCommand extends CommandBase
 {
 	public enum ArmDirection
@@ -13,6 +15,7 @@ public class ArmCommand extends CommandBase
 	{
 		super("ArmCommand");
 		requires(armSubsystem);
+//		requires(wristSubsystem);
 		this.direction = direction;
 	}
 
@@ -29,15 +32,22 @@ public class ArmCommand extends CommandBase
 		{
 			case UP:
 				armSubsystem.moveUp();
+				if (!RobotMap.ArmPositionUpper.get())
+				{
+//					isFinished();
+				}
 				break;
 			case STAY:
 				armSubsystem.hold();
 			case DOWN:
 				armSubsystem.moveDown();
+				if (!RobotMap.ArmPositionLower.get())
+				{
+//					isFinished();
+				}
 				break;
 		}
 	}
-
 
 	@Override
 	protected boolean isFinished()

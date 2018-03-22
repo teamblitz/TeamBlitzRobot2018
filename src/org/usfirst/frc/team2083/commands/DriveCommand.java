@@ -1,5 +1,7 @@
 package org.usfirst.frc.team2083.commands;
 
+import org.usfirst.frc.team2083.robot.Robot;
+
 public class DriveCommand extends CommandBase
 {
 	final double	joystickZeroThreshold	= 0.15;
@@ -26,8 +28,8 @@ public class DriveCommand extends CommandBase
 		double x = 0, y = 0;
 
 		// Get controller input.
-		x = oi.getMotorDriveLeftRightValue();
-		y = oi.getMotorDriveForwardBackValue();
+		x = Robot.oi.getMotorDriveLeftRightValue();
+		y = Robot.oi.getMotorDriveForwardBackValue();
 		x = x * Math.abs(x);
 		y = y * Math.abs(y);
 

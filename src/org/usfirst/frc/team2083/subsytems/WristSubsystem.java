@@ -40,6 +40,7 @@ public class WristSubsystem extends Subsystem
 
 	public void moveUp()
 	{
+		System.out.println(top.get());
 		if (top.get())
 		{
 			setVoltage(1);

@@ -34,9 +34,12 @@ public class Robot extends IterativeRobot
 	WristCommand	wristCommand;
 	Command			autoCommand;
 
+	public static OI oi;
+
 	@Override
 	public void robotInit()
 	{
+		oi = new OI();
 		CommandBase.init();
 		driveCommand = new DriveCommand();
 		driveCommand.disableControl();
@@ -70,11 +73,10 @@ public class Robot extends IterativeRobot
 	@Override
 	public void teleopInit()
 	{
-		CommandBase.grappleSubsystem.start();
 		driveCommand.enableControl();
 		driveCommand.start();
 		wristCommand.start();
-		
+
 		RobotMap.armMotor.getSensorCollection().setQuadraturePosition(0, 10);
 
 	}
@@ -82,6 +84,10 @@ public class Robot extends IterativeRobot
 	@Override
 	public void teleopPeriodic()
 	{
+		if (!oi.xbox.getRawButtonPressed(0) && !oi.xbox.getRawButtonPressed(3))
+		{
+			Scheduler.getInstance().add(new WristCommand(WristCommand.Positions.UP));
+		}
 		Scheduler.getInstance().run();
 	}
 

@@ -86,9 +86,7 @@ public class RobotMap
 	static Joystick xBoxController = new Joystick(0); // 0
 
 	// XBox Joystick IDs
-	public static double	LeftJoystickVertical	= xBoxController.getRawAxis(0);	// 0
-	public static double	LeftJoystickHorizontal	= xBoxController.getRawAxis(1);	// 1
-	public static double	RightJoystickVertical	= xBoxController.getRawAxis(5);	// 5
+
 
 	public static double RightJoystickHorizontal = xBoxController.getRawAxis(6); // Unused and Untested
 
