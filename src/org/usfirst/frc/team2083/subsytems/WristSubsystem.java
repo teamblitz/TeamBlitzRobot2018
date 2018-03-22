@@ -65,7 +65,6 @@ public class WristSubsystem extends Subsystem
 	public void setVoltage(double aVoltage)
 	{
 		wristMotor.set(ControlMode.PercentOutput, aVoltage);
-		System.out.println("Voltage Set" + aVoltage);
 	}
 
 	@Override

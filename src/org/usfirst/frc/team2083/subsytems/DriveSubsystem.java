@@ -82,7 +82,6 @@ public class DriveSubsystem extends Subsystem
 		// left motor to the same value
 		leftBack.follow(leftFront);
 		leftFront.set(ControlMode.PercentOutput, -aVoltage);
-		System.out.println("Left Voltage: ");
 	}
 
 	public void setRightVoltage(double aVoltage)

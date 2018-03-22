@@ -45,18 +45,18 @@ public class GrappleSubsystem extends Subsystem
 		if (dropModePrep)
 		{
 			dropModeActive = true;
-			System.out.println("Grapple Drop Prep Active");
+		//	System.out.println("Grapple Drop Prep Active");
 		}
 		else
 		{
-			System.out.println("Grapple Drop Prep Failed to Activate");
+		//	System.out.println("Grapple Drop Prep Failed to Activate");
 		}
 	}
 
 	public void dropExit()
 	{
 		dropModeActive = false;
-		System.out.println("Grapple Drop Prep Exited");
+	//	System.out.println("Grapple Drop Prep Exited");
 	}
 
 	public void start()

@@ -20,7 +20,7 @@ public class ArmSubsystem extends Subsystem
 	public ArmSubsystem()
 	{
 		super("ArmSubsystem");
-		
+
 		top = RobotMap.ArmPositionUpper;
 		bottom = RobotMap.ArmPositionLower;
 		armMotor = RobotMap.armMotor;
@@ -44,7 +44,8 @@ public class ArmSubsystem extends Subsystem
 		// armSetter();
 		if (top.get())
 		{
-			armMotor.set(ControlMode.PercentOutput, motorSpeed);
+			armMotor.set(ControlMode.PercentOutput, upwardScaleFactor(armMotor.getSelectedSensorPosition(0), 1440));
+			System.out.println(upwardScaleFactor(armMotor.getSelectedSensorPosition(0), 1440));
 		}
 		else
 		{
@@ -57,8 +58,20 @@ public class ArmSubsystem extends Subsystem
 		// armSetter();
 		if (bottom.get())
 		{
-			armMotor.set(ControlMode.PercentOutput, -motorSpeed);
+			// armMotor.set(ControlMode.Position, 45 * 1440 / 360);
+			// if (armMotor.getControlMode() == ControlMode.Position)
+			// {
+			// System.out.println("err = " + armMotor.getClosedLoopError(0));
+			// System.out.println("pos = " +
+			// armMotor.getSensorCollection().getQuadraturePosition());
+			// System.out.println("vol = " + armMotor.getMotorOutputVoltage());
+			// }
+			// else
+			// {
+			armMotor.set(ControlMode.PercentOutput, -downwardScaleFactor(armMotor.getSelectedSensorPosition(0), 1440));
+			System.out.println(-upwardScaleFactor(armMotor.getSelectedSensorPosition(0), 1440));
 		}
+		// }
 		else
 		{
 			zeroOut();
@@ -75,6 +88,47 @@ public class ArmSubsystem extends Subsystem
 		else
 		{
 			zeroOut();
+		}
+	}
+
+	double downwardScaleFactor(double currentPosition, int totalUnits)
+	{
+		double topPosition = totalUnits / 2;
+		if (currentPosition <= topPosition / 180 * 30)
+		{
+			return 0.25;
+		}
+		else if (currentPosition <= topPosition / 180 * 60)
+		{
+			return 0.25;
+		}
+		else if (currentPosition <= topPosition / 180 * 90)
+		{
+			return 0.50;
+		}
+		else
+		{
+			return 1.0;
+		}
+	}
+	double upwardScaleFactor(double currentPosition, int totalUnits)
+	{
+		double topPosition = totalUnits / 2;
+		if (currentPosition <= topPosition / 180 * 120)
+		{
+			return 1.0;
+		}
+		else if (currentPosition <= topPosition / 180 * 140)
+		{
+			return 0.75;
+		}
+		else if (currentPosition <= topPosition / 180 * 170)
+		{
+			return 0.30;
+		}
+		else
+		{
+			return 0.1;
 		}
 	}
 

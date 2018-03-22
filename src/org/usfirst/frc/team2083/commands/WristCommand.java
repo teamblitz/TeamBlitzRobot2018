@@ -34,19 +34,19 @@ public class WristCommand extends CommandBase
 	@Override
 	protected void execute()
 	{
-//		double POV = oi.getMotorWristValue();
-//		if (POV == 0)
-//		{
-//			wristSubsystem.moveUp();
-//		}
-//		else if (POV == 180)
-//		{
-//			wristSubsystem.moveDown();
-//		}
-//		else
-//		{
-//			wristSubsystem.setVoltage(0);
-//		}
+		double POV = oi.getMotorWristValue();
+		if (POV == 0)
+		{
+			wristSubsystem.moveUp();
+		}
+		else if (POV == 180)
+		{
+			wristSubsystem.moveDown();
+		}
+		else
+		{
+			wristSubsystem.setVoltage(0);
+		}
 	}
 
 	@Override

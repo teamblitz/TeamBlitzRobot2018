@@ -74,6 +74,8 @@ public class Robot extends IterativeRobot
 		driveCommand.enableControl();
 		driveCommand.start();
 		wristCommand.start();
+		
+		RobotMap.armMotor.getSensorCollection().setQuadraturePosition(0, 10);
 
 	}
 

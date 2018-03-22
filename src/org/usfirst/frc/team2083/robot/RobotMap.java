@@ -41,7 +41,20 @@ public class RobotMap
 	{
 		armMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
 		armMotor.getSensorCollection().setQuadraturePosition(0, 10);
-		armMotor.setInverted(false);
+		armMotor.setSensorPhase(false);
+//		armMotor.setInverted(false);
+		armMotor.configNominalOutputForward(0, 10);
+		armMotor.configNominalOutputReverse(0, 10);
+		armMotor.configPeakOutputForward(1, 10);
+		armMotor.configPeakOutputReverse(-1, 10);
+		armMotor.configAllowableClosedloopError(0, 0, 10);
+		armMotor.config_kF(0, 0.0, 10);
+		armMotor.config_kP(0, 0.1, 10);
+		armMotor.config_kI(0, 0.0, 10);
+		armMotor.config_kD(0, 0.0, 10);
+		armMotor.configForwardSoftLimitThreshold(1000, 10);
+		armMotor.configForwardSoftLimitThreshold(-1000, 10);
+		armMotor.setSelectedSensorPosition(0, 0, 10);
 	}
 
 	// Wrist Motors
