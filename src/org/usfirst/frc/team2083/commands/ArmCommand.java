@@ -1,64 +1,41 @@
 package org.usfirst.frc.team2083.commands;
 
-import org.usfirst.frc.team2083.robot.RobotMap;
-
 public class ArmCommand extends CommandBase
 {
-	public enum ArmDirection
-	{
-		UP, DOWN, STAY
-	}
+	double degreePos;
 
-	ArmDirection direction;
-
-	public ArmCommand(ArmDirection direction)
+	public ArmCommand(double degreePos)
 	{
 		super("ArmCommand");
 		requires(armSubsystem);
-		this.direction = direction;
+		requires(wristSubsystem);
+		this.degreePos = degreePos;
 	}
 
 	@Override
 	protected void initialize()
 	{
+		armSubsystem.reset();
 	}
 
 	@Override
 	protected void execute()
 	{
-		// super.execute();
-		switch (direction)
-		{
-			case UP:
-				armSubsystem.moveUp();
-				if (!RobotMap.ArmPositionUpper.get())
-				{
-//					isFinished();
-				}
-				break;
-			case STAY:
-				armSubsystem.hold();
-				break;
-			case DOWN:
-				armSubsystem.moveDown();
-				if (!RobotMap.ArmPositionLower.get())
-				{
-//					isFinished();
-				}
-				break;
-		}
+		wristSubsystem.moveTo(0);
+		armSubsystem.moveTo(degreePos);
 	}
 
 	@Override
 	protected boolean isFinished()
 	{
-		return false;
+		boolean finished = Math.abs(armSubsystem.armMotor.getSelectedSensorPosition(0) - degreePos * armSubsystem.encoderUnitsPerRev / 360.0f) < 10.0f;
+		System.out.print("ArmCommand finished: " + finished);
+		return finished;
 	}
 
 	@Override
 	protected void end()
 	{
-		armSubsystem.zeroOut();
 		super.end();
 	}
 

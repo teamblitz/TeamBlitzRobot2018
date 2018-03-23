@@ -10,6 +10,6 @@ public class PowerCubeCarry extends CommandGroup
 	public PowerCubeCarry()
 	{
 		addSequential(new GripperCommand(GripperCommand.Action.CLOSE), 1500); // call stop or fix code
-		addSequential(new WristCommand(WristCommand.Positions.UP));
+		addSequential(new WristCommand(0.0));
 	}
 }

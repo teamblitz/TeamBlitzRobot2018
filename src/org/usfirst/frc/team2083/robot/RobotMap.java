@@ -1,7 +1,7 @@
 package org.usfirst.frc.team2083.robot;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -16,7 +16,7 @@ public class RobotMap
 	 */
 	
 	// Drive System Motors
-	public static WPI_TalonSRX frontLeftMotor = new WPI_TalonSRX(1); // 1
+	public static TalonSRX frontLeftMotor = new TalonSRX(1); // 1
 	static
 	{
 		frontLeftMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
@@ -24,7 +24,7 @@ public class RobotMap
 		frontLeftMotor.setInverted(false);
 	}
 
-	public static WPI_TalonSRX frontRightMotor = new WPI_TalonSRX(2); // 2
+	public static TalonSRX frontRightMotor = new TalonSRX(2); // 2
 	static
 	{
 		frontRightMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
@@ -36,7 +36,7 @@ public class RobotMap
 	public static WPI_VictorSPX	backLeftMotor	= new WPI_VictorSPX(6);	// 6 (Slave)
 
 	// Arm Motors
-	public static WPI_TalonSRX armMotor = new WPI_TalonSRX(8); // 8
+	public static TalonSRX armMotor = new TalonSRX(8); // 8
 	static
 	{
 		armMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
@@ -48,14 +48,14 @@ public class RobotMap
 		armMotor.configPeakOutputReverse(-1, 10);
 		armMotor.configAllowableClosedloopError(0, 0, 10);
 		armMotor.config_kF(0, 0.0, 10);
-		armMotor.config_kP(0, 10.0, 10);
+		armMotor.config_kP(0, 1.0, 10);
 		armMotor.config_kI(0, 0.0, 10);
 		armMotor.config_kD(0, 0.0, 10);
 		armMotor.setSelectedSensorPosition(0, 0, 10);
 	}
 
 	// Wrist Motors
-	public static WPI_TalonSRX wristMotor = new WPI_TalonSRX(9); // 9
+	public static TalonSRX wristMotor = new TalonSRX(9); // 9
 	static
 	{
 		wristMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
@@ -67,14 +67,14 @@ public class RobotMap
 		wristMotor.configPeakOutputReverse(-1, 10);
 		wristMotor.configAllowableClosedloopError(0, 0, 10);
 		wristMotor.config_kF(0, 0.0, 10);
-		wristMotor.config_kP(0, 10.0, 10);
+		wristMotor.config_kP(0, 3.0, 10);
 		wristMotor.config_kI(0, 0.0, 10);
 		wristMotor.config_kD(0, 0.0, 10);
 		wristMotor.setSelectedSensorPosition(0, 0, 10);
 	}
 
 	// Gripper Motors
-	public static WPI_TalonSRX gripperMotor = new WPI_TalonSRX(3); // 3
+	public static TalonSRX gripperMotor = new TalonSRX(3); // 3
 	static
 	{
 		gripperMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
@@ -83,7 +83,7 @@ public class RobotMap
 	}
 
 	// Grapple Motor (for the winch)
-	public static WPI_TalonSRX grappleMotor = new WPI_TalonSRX(4); // 4
+	public static TalonSRX grappleMotor = new TalonSRX(4); // 4
 
 	/*
 	 * Joystick IDs

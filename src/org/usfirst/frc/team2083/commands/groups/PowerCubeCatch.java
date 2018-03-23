@@ -11,9 +11,9 @@ public class PowerCubeCatch extends CommandGroup
 	public PowerCubeCatch()
 	{
 		addSequential(new GripperCommand(GripperCommand.Action.CLOSE), 1500); // call stop or fix code
-		addSequential(new WristCommand(WristCommand.Positions.UP));
-		addSequential(new ArmCommand(ArmCommand.ArmDirection.DOWN));
-		addSequential(new WristCommand(WristCommand.Positions.DOWN));
+		addSequential(new WristCommand(0.0));
+		addSequential(new ArmCommand(0.0));
+		addSequential(new WristCommand(0.0));
 		addSequential(new GripperCommand(GripperCommand.Action.OPEN), 1500);  // call stop or fix code
 
 	}

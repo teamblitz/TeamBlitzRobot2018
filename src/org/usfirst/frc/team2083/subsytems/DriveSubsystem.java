@@ -3,18 +3,18 @@ package org.usfirst.frc.team2083.subsytems;
 import org.usfirst.frc.team2083.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class DriveSubsystem extends Subsystem
 {
-	public WPI_TalonSRX		leftFront;
-	public WPI_VictorSPX	leftBack;
+	public TalonSRX		leftFront;
+	public VictorSPX	leftBack;
 	
-	public WPI_TalonSRX		rightFront;
-	public WPI_VictorSPX	rightBack;
+	public TalonSRX		rightFront;
+	public VictorSPX	rightBack;
 
 	public DriveSubsystem()
 	{
@@ -55,12 +55,6 @@ public class DriveSubsystem extends Subsystem
 
 	public void disableControl()
 	{
-		// Disable all motors in the drive system when called
-		System.out.println("Drive System Disabled");
-		leftBack.disable();
-		leftFront.disable();
-		rightFront.disable();
-		rightBack.disable();
 	}
 
 	/*

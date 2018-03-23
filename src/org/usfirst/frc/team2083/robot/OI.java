@@ -21,12 +21,11 @@ public class OI
 
 	public OI()
 	{
-		ButtonA.whenPressed(new ArmCommand(ArmCommand.ArmDirection.DOWN));
-		//ButtonB.whileHeld(new ArmCommand(ArmCommand.ArmDirection.STAY));
-		ButtonY.whenPressed(new ArmCommand(ArmCommand.ArmDirection.UP));
+		ButtonA.whenPressed(new ArmCommand(0.0));
+		ButtonY.whenPressed(new ArmCommand(180.0));
 
-		ButtonX.whenPressed(new WristCommand(WristCommand.Positions.DOWN));
-		ButtonB.whenPressed(new WristCommand(WristCommand.Positions.UP));
+		ButtonX.whenPressed(new WristCommand(0.0));
+		ButtonB.whenPressed(new WristCommand(-90.0));
 		
 		RBumper.whenPressed(new GripperCommand(GripperCommand.Action.CLOSE));
 		RBumper.whenReleased(new GripperCommand(GripperCommand.Action.STOP));

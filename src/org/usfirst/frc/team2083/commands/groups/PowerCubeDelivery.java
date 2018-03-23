@@ -9,11 +9,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class PowerCubeDelivery extends CommandGroup
 {
 
-	public PowerCubeDelivery(WristCommand.Positions wristPosition)
+	public PowerCubeDelivery(double wristDegreePos)
 	{
 		addParallel(new GripperCommand(GripperCommand.Action.CLOSE), 1500);  // call stop or fix code
-		addSequential(new ArmCommand(ArmCommand.ArmDirection.UP)); 
-		addSequential(new WristCommand(wristPosition));
+		addSequential(new ArmCommand(180.0)); 
+		addSequential(new WristCommand(wristDegreePos));
 	}
 	
 }

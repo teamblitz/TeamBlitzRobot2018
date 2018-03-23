@@ -2,15 +2,7 @@ package org.usfirst.frc.team2083.commands;
 
 public class WristCommand extends CommandBase
 {
-	final int		povThreshold	= 15;
-	final double	wristSpeed		= 0.25;
-
-	public enum Positions {
-		UP,
-		DOWN
-	}
-	
-	Positions position;
+	double degreePos;
 	
 	public WristCommand()
 	{
@@ -18,11 +10,11 @@ public class WristCommand extends CommandBase
 		requires(wristSubsystem);
 	}
 
-	public WristCommand(Positions position)
+	public WristCommand(double degreePos)
 	{
 		super("WristCommand");
 		requires(wristSubsystem);
-		this.position = position;
+		this.degreePos = degreePos;
 	}
 
 
@@ -34,39 +26,15 @@ public class WristCommand extends CommandBase
 	@Override
 	protected void execute()
 	{
-		switch (position)
-		{
-			case UP:
-				wristSubsystem.moveUp();
-				break;
-			case DOWN:
-				wristSubsystem.moveDown();
-				break;
-		}
-
-		//		double POV = Robot.oi.getMotorWristValue();
-//		if (POV == 0)
-//		{
-//			wristSubsystem.moveUp();
-//			if (RobotMap.WristPositionUpper.get()) {
-//				isFinished();
-//			}
-//		}
-//		else if (POV == 180)
-//		{
-//			wristSubsystem.moveDown();
-//		}
-//		else
-//		{
-//			wristSubsystem.setVoltage(0);
-//		}
+		wristSubsystem.moveTo(degreePos);
 	}
 
 	@Override
 	protected boolean isFinished()
 	{
-
-		return false;
+		boolean finished = Math.abs(wristSubsystem.wristMotor.getSelectedSensorPosition(0) - degreePos * wristSubsystem.encoderUnitsPerRev / 360.0f) < 10.0f;
+		System.out.print("WristCommand finished: " + finished);
+		return finished;
 	}
 
 	@Override
@@ -79,6 +47,5 @@ public class WristCommand extends CommandBase
 	protected void interrupted()
 	{
 		super.interrupted();
-		System.out.println("Wrist Interuppted!");
 	}
 }
