@@ -1,8 +1,10 @@
 package org.usfirst.frc.team2083.robot;
 
-import org.usfirst.frc.team2083.commands.ArmCommand;
+import org.usfirst.frc.team2083.commands.ArmCommandHold;
+import org.usfirst.frc.team2083.commands.ArmCommandVel;
 import org.usfirst.frc.team2083.commands.GripperCommand;
-import org.usfirst.frc.team2083.commands.WristCommand;
+import org.usfirst.frc.team2083.commands.WristCommandPos;
+import org.usfirst.frc.team2083.commands.WristCommandVel;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -21,16 +23,21 @@ public class OI
 
 	public OI()
 	{
-		ButtonA.whenPressed(new ArmCommand(0.0));
-		ButtonY.whenPressed(new ArmCommand(180.0));
-
-		ButtonX.whenPressed(new WristCommand(0.0));
-		ButtonB.whenPressed(new WristCommand(-90.0));
+		ButtonA.whileHeld(new ArmCommandVel(ArmCommandVel.Direction.DOWN));
+		ButtonA.whenReleased(new ArmCommandHold(RobotMap.armMotor.getSensorCollection().getQuadraturePosition()));
+		ButtonY.whileHeld(new ArmCommandVel(ArmCommandVel.Direction.UP));
+		ButtonY.whenReleased(new ArmCommandHold(RobotMap.armMotor.getSensorCollection().getQuadraturePosition()));
 		
-		RBumper.whenPressed(new GripperCommand(GripperCommand.Action.CLOSE));
+		ButtonX.whenPressed(new WristCommandPos(0.0));
+		ButtonB.whenPressed(new WristCommandPos(-120.0));
+		
+		ButtonStart.whileHeld(new WristCommandVel(WristCommandVel.Direction.UP));
+		ButtonBack.whileHeld(new WristCommandVel(WristCommandVel.Direction.DOWN));
+		
+		RBumper.whenPressed(new GripperCommand(GripperCommand.Action.OPEN));
 		RBumper.whenReleased(new GripperCommand(GripperCommand.Action.STOP));
 
-		LBumper.whenPressed(new GripperCommand(GripperCommand.Action.OPEN));
+		LBumper.whenPressed(new GripperCommand(GripperCommand.Action.CLOSE));
 		LBumper.whenReleased(new GripperCommand(GripperCommand.Action.STOP));
 	}
 

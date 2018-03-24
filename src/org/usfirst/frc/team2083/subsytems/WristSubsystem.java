@@ -48,6 +48,18 @@ public class WristSubsystem extends Subsystem
 		System.out.println("pos = " + wristMotor.getSensorCollection().getQuadraturePosition());
 	}
 
+	public void moveAtSpeed(double speed)
+	{
+		double setPt = speed / 360.0 * encoderUnitsPerRev * 0.1;
+		
+		wristMotor.set(ControlMode.Velocity, setPt);
+		System.out.println("wrist velocity");
+		System.out.println("set = " + setPt);
+		System.out.println("err = " + wristMotor.getClosedLoopError(0));
+		System.out.println("vol = " + wristMotor.getMotorOutputVoltage());
+		System.out.println("pos = " + wristMotor.getSensorCollection().getQuadraturePosition());
+	}
+
 	@Override
 	protected void initDefaultCommand()
 	{

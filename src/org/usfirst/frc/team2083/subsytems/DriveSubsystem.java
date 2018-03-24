@@ -13,6 +13,8 @@ public class DriveSubsystem extends Subsystem
 	public TalonSRX		leftFront;
 	public VictorSPX	leftBack;
 	
+	double encoderUnitsPerRev;
+	
 	public TalonSRX		rightFront;
 	public VictorSPX	rightBack;
 
@@ -24,6 +26,8 @@ public class DriveSubsystem extends Subsystem
 		leftBack = RobotMap.backLeftMotor;
 		rightFront = RobotMap.frontRightMotor;
 		rightBack = RobotMap.backRightMotor;
+		
+		encoderUnitsPerRev = 250;
 	}
 
 	@Override
@@ -39,18 +43,18 @@ public class DriveSubsystem extends Subsystem
 		// called
 		System.out.println("Drive System Enabled");
 
-		rightFront.configNominalOutputForward(0, 0);
-		rightFront.configNominalOutputReverse(0, 0);
-		rightFront.configPeakOutputForward(1, 10);
-		rightFront.configPeakOutputReverse(-1, 10);
-		leftFront.configNominalOutputForward(0, 0);
-		leftFront.configNominalOutputReverse(0, 0);
-		leftFront.configPeakOutputForward(1, 10);
-		leftFront.configPeakOutputReverse(-1, 10);
-		leftBack.set(ControlMode.PercentOutput, 0);
-		leftFront.set(ControlMode.PercentOutput, 0);
-		rightFront.set(ControlMode.PercentOutput, 0);
-		rightBack.set(ControlMode.PercentOutput, 0);
+//		rightFront.configNominalOutputForward(0, 0);
+//		rightFront.configNominalOutputReverse(0, 0);
+//		rightFront.configPeakOutputForward(1, 10);
+//		rightFront.configPeakOutputReverse(-1, 10);
+//		leftFront.configNominalOutputForward(0, 0);
+//		leftFront.configNominalOutputReverse(0, 0);
+//		leftFront.configPeakOutputForward(1, 10);
+//		leftFront.configPeakOutputReverse(-1, 10);
+//		leftBack.set(ControlMode.PercentOutput, 0);
+//		leftFront.set(ControlMode.PercentOutput, 0);
+//		rightFront.set(ControlMode.PercentOutput, 0);
+//		rightBack.set(ControlMode.PercentOutput, 0);
 	}
 
 	public void disableControl()
@@ -76,6 +80,8 @@ public class DriveSubsystem extends Subsystem
 		// left motor to the same value
 		leftBack.follow(leftFront);
 		leftFront.set(ControlMode.PercentOutput, -aVoltage);
+		//leftBack.follow(leftFront);
+		//leftFront.set(ControlMode.Velocity, -aVoltage / 360.0 * encoderUnitsPerRev * 0.1);
 	}
 
 	public void setRightVoltage(double aVoltage)

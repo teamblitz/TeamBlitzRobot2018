@@ -50,7 +50,28 @@ public class ArmSubsystem extends Subsystem
 		}
 		
 		armMotor.set(ControlMode.Position, midPt);
-		System.out.println("wrist up");
+		System.out.println("arm position");
+		System.out.println("set = " + setPt);
+		System.out.println("err = " + armMotor.getClosedLoopError(0));
+		System.out.println("vol = " + armMotor.getMotorOutputVoltage());
+		System.out.println("pos = " + armMotor.getSensorCollection().getQuadraturePosition());
+	}
+	
+	public void moveAtSpeed(double speed)
+	{
+		double setPt = speed / 360.0 * encoderUnitsPerRev * 0.1;
+		
+		armMotor.set(ControlMode.Velocity, setPt);
+		System.out.println("arm velocity");
+		System.out.println("set = " + setPt);
+		System.out.println("err = " + armMotor.getClosedLoopError(0));
+		System.out.println("vol = " + armMotor.getMotorOutputVoltage());
+		System.out.println("pos = " + armMotor.getSensorCollection().getQuadraturePosition());
+	}
+	public void hold(double setPt)
+	{
+		armMotor.set(ControlMode.Position, setPt);
+		System.out.println("arm hold");
 		System.out.println("set = " + setPt);
 		System.out.println("err = " + armMotor.getClosedLoopError(0));
 		System.out.println("vol = " + armMotor.getMotorOutputVoltage());

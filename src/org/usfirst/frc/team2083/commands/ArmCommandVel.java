@@ -1,15 +1,22 @@
 package org.usfirst.frc.team2083.commands;
 
-public class ArmCommand extends CommandBase
+public class ArmCommandVel extends CommandBase
 {
-	double degreePos;
-
-	public ArmCommand(double degreePos)
+	public enum Direction
 	{
-		super("ArmCommand");
+		UP, DOWN
+	}
+
+	Direction	direction;
+	double		speed;
+
+	public ArmCommandVel(Direction direction)
+	{
+		super("ArmCommandVel");
 		requires(armSubsystem);
 		requires(wristSubsystem);
-		this.degreePos = degreePos;
+		this.direction = direction;
+		this.speed = 180;
 	}
 
 	@Override
@@ -22,15 +29,22 @@ public class ArmCommand extends CommandBase
 	protected void execute()
 	{
 		wristSubsystem.moveTo(0);
-		armSubsystem.moveTo(degreePos);
+
+		switch (direction)
+		{
+			case UP:
+				armSubsystem.moveAtSpeed(speed);
+				break;
+			case DOWN:
+				armSubsystem.moveAtSpeed(-speed/3);
+				break;
+		}
 	}
 
 	@Override
 	protected boolean isFinished()
 	{
-		boolean finished = Math.abs(armSubsystem.armMotor.getSelectedSensorPosition(0) - degreePos * armSubsystem.encoderUnitsPerRev / 360.0f) < 10.0f;
-		System.out.print("ArmCommand finished: " + finished);
-		return finished;
+		return false;
 	}
 
 	@Override

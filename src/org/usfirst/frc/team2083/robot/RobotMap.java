@@ -2,7 +2,7 @@ package org.usfirst.frc.team2083.robot;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Joystick;
@@ -20,21 +20,43 @@ public class RobotMap
 	static
 	{
 		frontLeftMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
-		frontLeftMotor.getSensorCollection().setQuadraturePosition(0, 10);
+		frontLeftMotor.setSensorPhase(false);
 		frontLeftMotor.setInverted(false);
+		frontLeftMotor.configNominalOutputForward(0, 10);
+		frontLeftMotor.configNominalOutputReverse(0, 10);
+		frontLeftMotor.configPeakOutputForward(1, 10);
+		frontLeftMotor.configPeakOutputReverse(-1, 10);
+		frontLeftMotor.configAllowableClosedloopError(0, 0, 10);
+		frontLeftMotor.config_kF(0, 0.0, 10);
+		frontLeftMotor.config_kP(0, 11.0, 10);
+		frontLeftMotor.config_kI(0, 0.0, 10);
+		frontLeftMotor.config_kD(0, 0.0, 10);
+		frontLeftMotor.setSelectedSensorPosition(0, 0, 10);
 	}
 
 	public static TalonSRX frontRightMotor = new TalonSRX(2); // 2
 	static
 	{
 		frontRightMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
-		frontRightMotor.getSensorCollection().setQuadraturePosition(0, 10);
+		frontRightMotor.setSensorPhase(false);
 		frontRightMotor.setInverted(false);
+		frontRightMotor.configNominalOutputForward(0, 10);
+		frontRightMotor.configNominalOutputReverse(0, 10);
+		frontRightMotor.configPeakOutputForward(1, 10);
+		frontRightMotor.configPeakOutputReverse(-1, 10);
+		frontRightMotor.configAllowableClosedloopError(0, 0, 10);
+		frontRightMotor.config_kF(0, 0.0, 10);
+		frontRightMotor.config_kP(0, 11.0, 10);
+		frontRightMotor.config_kI(0, 0.0, 10);
+		frontRightMotor.config_kD(0, 0.0, 10);
+		frontRightMotor.setSelectedSensorPosition(0, 0, 10);
 	}
 
-	public static WPI_VictorSPX	backRightMotor	= new WPI_VictorSPX(5);	// 5 (Slave)
-	public static WPI_VictorSPX	backLeftMotor	= new WPI_VictorSPX(6);	// 6 (Slave)
+	public static VictorSPX	backRightMotor	= new VictorSPX(5);	// 5 (Slave)
+	public static VictorSPX	backLeftMotor	= new VictorSPX(6);	// 6 (Slave)
 
+	
+	
 	// Arm Motors
 	public static TalonSRX armMotor = new TalonSRX(8); // 8
 	static
@@ -48,7 +70,7 @@ public class RobotMap
 		armMotor.configPeakOutputReverse(-1, 10);
 		armMotor.configAllowableClosedloopError(0, 0, 10);
 		armMotor.config_kF(0, 0.0, 10);
-		armMotor.config_kP(0, 1.0, 10);
+		armMotor.config_kP(0, 11.0, 10);
 		armMotor.config_kI(0, 0.0, 10);
 		armMotor.config_kD(0, 0.0, 10);
 		armMotor.setSelectedSensorPosition(0, 0, 10);

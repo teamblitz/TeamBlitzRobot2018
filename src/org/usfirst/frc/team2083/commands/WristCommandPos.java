@@ -1,18 +1,18 @@
 package org.usfirst.frc.team2083.commands;
 
-public class WristCommand extends CommandBase
+public class WristCommandPos extends CommandBase
 {
 	double degreePos;
 	
-	public WristCommand()
+	public WristCommandPos()
 	{
 		super("WristCommand");
 		requires(wristSubsystem);
 	}
 
-	public WristCommand(double degreePos)
+	public WristCommandPos(double degreePos)
 	{
-		super("WristCommand");
+		super("WristCommandPos");
 		requires(wristSubsystem);
 		this.degreePos = degreePos;
 	}

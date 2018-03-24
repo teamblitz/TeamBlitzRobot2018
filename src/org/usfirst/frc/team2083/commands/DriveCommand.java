@@ -31,7 +31,7 @@ public class DriveCommand extends CommandBase
 		x = Robot.oi.getMotorDriveLeftRightValue();
 		y = Robot.oi.getMotorDriveForwardBackValue();
 		x = x * Math.abs(x);
-		y = y * Math.abs(y);
+		y = y * Math.abs(y) * -1; //Reversed, so that lining up the cubes is easie./;'p[pr
 
 		// Set drive motor input to zero if joystick is close to zero.
 		if (Math.abs(x) < joystickZeroThreshold && Math.abs(y) < joystickZeroThreshold)

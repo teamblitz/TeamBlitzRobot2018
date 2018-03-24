@@ -8,14 +8,19 @@
 package org.usfirst.frc.team2083.robot;
 
 import org.usfirst.frc.team2083.autocommands.DriveStraight;
+import org.usfirst.frc.team2083.autocommands.DriveStraightWithDelay;
+import org.usfirst.frc.team2083.autocommands.TurnLeft;
+import org.usfirst.frc.team2083.autocommands.TurnRight;
 import org.usfirst.frc.team2083.commands.CommandBase;
 import org.usfirst.frc.team2083.commands.DriveCommand;
-import org.usfirst.frc.team2083.commands.WristCommand;
+import org.usfirst.frc.team2083.commands.WristCommandPos;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /*
  * The VM is configured to automatically run this class, and to call the
@@ -31,19 +36,31 @@ public class Robot extends IterativeRobot
 	 * for any initialization code.
 	 */
 	DriveCommand	driveCommand;
-	WristCommand	wristCommand;
-	Command			autoCommand;
+	WristCommandPos	wristCommand;
 
 	public static OI oi;
 
+	Command autonomousCommand;
+	SendableChooser<Command> autoChooser;
+	
+	boolean zerosSet;
+	
 	@Override
 	public void robotInit()
 	{
 		oi = new OI();
 		CommandBase.init();
+		SmartDashboard.putData(Scheduler.getInstance());
+
 		driveCommand = new DriveCommand();
 		driveCommand.disableControl();
-		wristCommand = new WristCommand();
+		wristCommand = new WristCommandPos();
+		
+		autoChooser = new SendableChooser<Command>();
+		autoChooser.addDefault("Drive Straight", new DriveStraight(1000, 0.3));
+		autoChooser.addDefault("Turn Left", new TurnLeft(3));
+		autoChooser.addDefault("Turn Right", new TurnRight(3));
+		SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);		
 	}
 
 	/*
@@ -52,10 +69,17 @@ public class Robot extends IterativeRobot
 	@Override
 	public void autonomousInit()
 	{
+		RobotMap.armMotor.getSensorCollection().setQuadraturePosition(0, 10);
+		RobotMap.wristMotor.getSensorCollection().setQuadraturePosition(0, 10);
+		RobotMap.frontLeftMotor.getSensorCollection().setQuadraturePosition(0, 10);
+		RobotMap.frontRightMotor.getSensorCollection().setQuadraturePosition(0, 10);
+		zerosSet = true;
+		
 		loadGameData();
 
-		autoCommand = new DriveStraight(10000, .3);
-		autoCommand.start();
+//		autonomousCommand = autoChooser.getSelected();
+		autonomousCommand = new DriveStraightWithDelay(3000, 0.45, 10000);
+		autonomousCommand.start();
 	}
 
 	/*
@@ -73,12 +97,17 @@ public class Robot extends IterativeRobot
 	@Override
 	public void teleopInit()
 	{
+		RobotMap.frontLeftMotor.getSensorCollection().setQuadraturePosition(0, 10);
+		RobotMap.frontRightMotor.getSensorCollection().setQuadraturePosition(0, 10);
 		driveCommand.enableControl();
 		driveCommand.start();
 //		wristCommand.start();
 
-		RobotMap.armMotor.getSensorCollection().setQuadraturePosition(0, 10);
-		RobotMap.wristMotor.getSensorCollection().setQuadraturePosition(0, 10);
+		if (!zerosSet)
+		{
+			RobotMap.armMotor.getSensorCollection().setQuadraturePosition(0, 10);
+			RobotMap.wristMotor.getSensorCollection().setQuadraturePosition(0, 10);
+		}
 	}
 
 	@Override
