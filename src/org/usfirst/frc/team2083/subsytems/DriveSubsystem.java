@@ -84,6 +84,22 @@ public class DriveSubsystem extends Subsystem
 		//leftFront.set(ControlMode.Velocity, -aVoltage / 360.0 * encoderUnitsPerRev * 0.1);
 	}
 
+//	public void setRightWheelsVelocity(double speed)
+//	{
+//		double setPt = speed * 4 * 360 / 360.0 * encoderUnitsPerRev * 0.1;
+//		
+//		rightBack.follow(rightFront);
+//		rightFront.set(ControlMode.Velocity, setPt);
+//	}
+//	
+//	public void setLeftWheelsVelocity(double speed)
+//	{
+//		double setPt = speed * 4 * 360 / 360.0 * encoderUnitsPerRev * 0.1;
+//		
+//		leftBack.follow(rightFront);
+//		leftFront.set(ControlMode.Velocity, setPt);
+//	}
+	
 	public void setRightVoltage(double aVoltage)
 	{
 		// When called, set the front right motor to aVoltage and set the back

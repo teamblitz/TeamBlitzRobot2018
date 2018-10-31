@@ -11,7 +11,7 @@ public class GripperSubsystem extends Subsystem
 {
 	public TalonSRX gripperMotor;
 
-	double motorSpeed = 0.5;
+	double motorSpeed = 0.7;
 
 	public GripperSubsystem()
 	{
